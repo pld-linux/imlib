@@ -36,6 +36,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libimlib1
 
 %define		_sysconfdir	/etc/X11
+%define		_desktopdir	%{_applnkdir}/Settings
 
 %description
 Imlib is an advanced replacement library for libraries like libXpm
@@ -149,7 +150,7 @@ Bibliotecas estáticas para desenvolvimento com imlib.
 %patch5 -p1
 %patch6 -p1
 # temporary hack
-%patch14 -p1
+#%patch14 -p1
 
 # locale names change
 mv -f po/zh_CN{.GB2312,}.po
