@@ -24,8 +24,8 @@ BuildRequires:	gettext-devel
 BuildRequires:	gtk+-devel
 BuildRequires:	libjpeg-devel >= 6b-18
 BuildRequires:	libtiff-devel
+BuildRequires:	libpng-devel >= 1.0.8
 BuildRequires:	libtool
-BuildRequires:	libpng >= 1.0.8
 BuildRequires:	libungif-devel
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
