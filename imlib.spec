@@ -19,12 +19,11 @@ BuildRequires:	libtiff-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libungif-devel
 BuildRequires:	zlib-devel
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
 %define		_datadir	/usr/share
 %define		_sysconfdir	/etc/X11
-%define		_applnkdir	%{_prefix}/share/applnk
 
 %description
 Imlib is an advanced replacement library for libraries like libXpm that
