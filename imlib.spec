@@ -20,6 +20,7 @@ Requires:	glib = 1.1.16
 Requires:	ImageMagick
 BuildRoot:	/tmp/%{name}-%{version}-root
 Obsoletes:	Imlib
+Conflicts:      glibc <= 2.0.7
 
 %description
 Imlib is an advanced replacement library for libraries like libXpm that
@@ -118,11 +119,13 @@ rm -rf $RPM_BUILD_ROOT
 /usr/share/aclocal/*
 
 %files static
-%attr(644,root,root) /usr/X11R6/lib/*a
+%attr(644,root,root) /usr/X11R6/lib/lib*.a
 
 %changelog
 * Wed Feb 24 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.9.3-1]
+- added "Conflicts: glibc <= 2.0.7" for preven installing with proper
+  version glibc,
 - added cfgeditor subpackage,
 - updated Requires for gtk+/glib,
 - changed sysconfdir to /etc/X11/GNOME.
