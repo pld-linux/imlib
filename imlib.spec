@@ -3,9 +3,10 @@ Summary(fr):	Librairie de chargement et interprétation d'images pour X11R6
 Summary(pl):	Biblioteki do renderowania i ³adowania grafiki pod X11R6
 Name:		imlib
 Version:	1.9.8.1
-Release:	4
+Release:	5
 License:	LGPL
 Group:		X11/Libraries
+Group(de):	X11/Libraries
 Group(pl):	X11/Biblioteki
 Source0:	ftp://ftp.gnome.org/pub/GNOME/stable/sources/imlib/%{name}-%{version}.tar.gz
 Source1:	%{name}-config.desktop
@@ -44,8 +45,9 @@ Imlib jest zaawansowanym zamiennikiem bibliotek typu libXpm.
 %package cfgeditor
 Summary:	Imlib configuration editor
 Summary(pl):	Edytor konfiguracji do biblioteki imlib
-Group:		X11/Utilities
-Group(pl):	X11/Narzêdzia
+Group:		X11/Applications
+Group(de):	X11/Applikationen
+Group(pl):	X11/Aplikacje
 Requires:	%{name} = %{version}
 
 %description cfgeditor
@@ -63,6 +65,7 @@ Summary:	Imlib header files and development documentation
 Summary(fr):	Fichiers entête pour Imlib
 Summary(pl):	Pliki nag³ówkowe oraz dokumentacja do imlib
 Group:		X11/Development/Libraries
+Group(de):	X11/Entwicklung/Libraries
 Group(pl):	X11/Programowanie/Biblioteki
 Requires:	%{name} = %{version}
 # Every program using imlib should get a list of libraries to link with by
@@ -88,6 +91,7 @@ Pliki nag³ówkowe oraz dokumentacja do biblioteki Imlib.
 Summary:	Imlib static libraries
 Summary(pl):	Biblioteki statyczne imlib
 Group:		X11/Development/Libraries
+Group(de):	X11/Entwicklung/Libraries
 Group(pl):	X11/Programowanie/Biblioteki
 Requires:	%{name}-devel = %{version}
 
@@ -109,7 +113,6 @@ gettextize --copy --force
 aclocal
 autoconf
 automake
-LDFLAGS="-s"; export LDFLAGS
 %configure
 %{__make}
 			    
@@ -122,8 +125,6 @@ install -d $RPM_BUILD_ROOT%{_applnkdir}/Settings
 	m4datadir=%{_aclocaldir}
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Settings
-
-strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*.so{,.*.*}
 
 %find_lang %{name}
 
