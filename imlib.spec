@@ -3,7 +3,7 @@ Summary(fr):	Librairie de chargement et interprétation d'images pour X11R6
 Summary(pl):	Biblioteki do renderowania i ³adowania grafiki pod X11R6
 Name:		imlib
 Version:	1.9.13
-Release:	2
+Release:	2.1
 Epoch:		1
 License:	LGPL
 Group:		X11/Libraries
@@ -107,7 +107,10 @@ gettextize --copy --force
 aclocal
 autoconf
 automake -a -c -f
-%configure
+if [ -f %{_pkgconfigdir}/libpng12.pc ] ; then
+	CPPFLAGS="`pkg-config libpng12 --cflags`"
+fi
+%configure CPPFLAGS="$CPPFLAGS"
 %{__make}
 
 %install
