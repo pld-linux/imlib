@@ -194,8 +194,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %attr(755,root,root) %{_libdir}/libImlib.so
 %attr(755,root,root) %{_libdir}/libgdk_imlib.so
-%attr(755,root,root) %{_libdir}/libImlib.la
-%attr(755,root,root) %{_libdir}/libgdk_imlib.la
+%{_libdir}/libImlib.la
+%{_libdir}/libgdk_imlib.la
 
 %attr(755,root,root) %{_bindir}/imlib-config
 
