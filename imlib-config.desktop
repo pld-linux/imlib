@@ -47,4 +47,5 @@ Icon=gnome-note.png
 Terminal=false
 Type=Application
 Encoding=UTF-8
+Categories=Application;System;Settings;
 # vi: encoding=utf-8
