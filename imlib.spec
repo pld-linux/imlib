@@ -3,13 +3,13 @@ Summary(fr):	Librairie de chargement et interprétation d'images pour X11R6
 Summary(pl):	Biblioteki do renderowania i ³adowania grafiki pod X11R6
 Name:		imlib
 Version:	1.9.8
-Release:	4
+Release:	5
 License:	LGPL
 Group:		X11/Libraries
 Group(pl):	X11/Biblioteki
 Source0:	ftp://ftp.gnome.org/pub/GNOME/stable/sources/imlib/%{name}-%{version}.tar.gz
 Source1:	imlib-config.desktop
-Patch:		imlib-gdk.patch
+Patch0:		imlib-gdk.patch
 URL:		http://www.labs.redhat.com/imlib/
 BuildRequires:	gtk+-devel 
 BuildRequires:	libjpeg-devel
@@ -24,13 +24,14 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_sysconfdir	/etc/X11
 
 %description
-Imlib is an advanced replacement library for libraries like libXpm that
-provides many more features with much greater flexability and speed.
+Imlib is an advanced replacement library for libraries like libXpm
+that provides many more features with much greater flexability and
+speed.
 
 %description -l fr
-Imlib est une librairie de remplacement avancée pour les librairies comme
-libXpm qui fourni plus d'atouts et beaucoup plus de flexibilité et de
-vitesse.
+Imlib est une librairie de remplacement avancée pour les librairies
+comme libXpm qui fourni plus d'atouts et beaucoup plus de flexibilité
+et de vitesse.
 
 %description -l pl
 Imlib jest zaawansowanym zamiennikiem bibliotek typu libXpm.
@@ -43,13 +44,14 @@ Group(pl):	X11/Narzêdzia
 Requires:	%{name} = %{version}
 
 %description cfgeditor
-The imlib_config program allows you to control the way imlib uses color and
-handles gamma correction/etc.
+The imlib_config program allows you to control the way imlib uses
+color and handles gamma correction/etc.
 
 %description -l pl cfgeditor
-Program imlib_config umo¿liwia zmianê sposobu u¿ywania przez bibliotekê
-imlib kolorów, korekcji gamma i innych.  The imlib_config program allows
-you to control the way imlib uses color and handles gamma correction/etc.
+Program imlib_config umo¿liwia zmianê sposobu u¿ywania przez
+bibliotekê imlib kolorów, korekcji gamma i innych. The imlib_config
+program allows you to control the way imlib uses color and handles
+gamma correction/etc.
 
 %package devel
 Summary:	Imlib header files and development documentation
@@ -66,7 +68,7 @@ Requires:	libtiff-devel
 Requires:	libungif-devel
 Requires:	libpng-devel
 Requires:	zlib-devel
-Requires	XFree86-devel
+Requires:	XFree86-devel
 
 %description devel
 Header files and development documentation for Imlib.
@@ -105,7 +107,9 @@ make
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_applnkdir}/Settings
 
-make install DESTDIR=$RPM_BUILD_ROOT
+make install \
+	DESTDIR=$RPM_BUILD_ROOT \
+	m4datadir=%{_aclocaldir}
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Settings
 
@@ -142,7 +146,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/imlib-config
 
 %{_includedir}/*
-%{_datadir}/aclocal/*
+%{_aclocaldir}/*
 
 %files static
 %defattr(644,root,root,755)
