@@ -2,11 +2,12 @@ Summary:	Image loading and rendering library for X11R6
 Summary(pl):	Biblioteki do renderowania i ³adowania grafiki pod X11R6
 Name:		imlib 
 Version:	1.9.7
-Release:	1
+Release:	2
 Copyright:	LGPL
 Group:		X11/Libraries
 Group(pl):	X11/Biblioteki
-Source:		ftp://ftp.gnome.org/pub/GNOME/source/imlib/%{name}/%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.gnome.org/pub/GNOME/source/imlib/%{name}/%{name}-%{version}.tar.gz
+Source1:	imlib-config.desktop
 URL:		http://www.labs.redhat.com/imlib/
 BuildRequires:	glib-devel 
 BuildRequires:	gtk+-devel 
@@ -21,6 +22,7 @@ BuildRoot:	/tmp/%{name}-%{version}-root
 %define		_prefix		/usr/X11R6
 %define		_datadir	/usr/share
 %define		_sysconfdir	/etc/X11
+%define		_applnkdir	%{_prefix}/share/applnk
 
 %description
 Imlib is an advanced replacement library for libraries like libXpm that
@@ -85,7 +87,11 @@ make
 			    
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_applnkdir}/Settings
+
 make install DESTDIR=$RPM_BUILD_ROOT
+
+install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Settings
 
 strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*.so{,.*.*}
 
@@ -105,7 +111,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files cfgeditor
 %defattr(644,root,root,755)
-
+%{_applnkdir}/Settings/imlib-config.desktop
 %attr(755,root,root) %{_bindir}/imlib_config
 
 %files devel
