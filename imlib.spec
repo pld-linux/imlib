@@ -1,14 +1,14 @@
 Summary:     Image loading and rendering library for X11R6
 Summary(pl): Biblioteki do renderowania i ³adowania plików graficznych pod X'y
 Name:        imlib 
-Version:     1.8.2
+Version:     1.9.0
 Release:     1
 Copyright:   LGPL
 Group:       X11/Libraries
 Group(pl):   X11/Biblioteki
-Source:      ftp://ftp.labs.redhat.com/pub/imlib/TAR/%{name}-%{version}.tar.gz
+Source:      ftp://ftp.gnome.org/pub/GNOME/source/%{name}/%{name}-%{version}.tar.gz
 Requires:    libpng, libtiff, libjpeg, zlib, libgr-progs, glib, gtk+, libungif
-Requires:    gtk+ = 1.1.12, glib = 1.1.12, libungif, ImageMagick
+Requires:    gtk+ = 1.1.13, glib = 1.1.13, libungif, ImageMagick
 URL:         http://www.labs.redhat.com/imlib/
 Obsoletes:   Imlib
 BuildRoot:   /tmp/%{name}-%{version}-root
@@ -81,19 +81,19 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644, root, root, 755)
 %doc README doc
 %attr(755, root, root) /usr/X11R6/lib/lib*.so
-/usr/X11R6/lib/lib*.so
-/usr/share/aclocal/*
 %attr(755, root, root) /usr/X11R6/bin/imlib-config
+/usr/X11R6/include/*
+/usr/share/aclocal/*
 
 %files static
 %attr(644, root, root) /usr/X11R6/lib/*a
 
 %changelog
 * Sun Jan 31 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-* Tue Dec 29 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [1.8.2-1]
+  [1.9.0-1]
+- added Group(pl),
 - added "Requires: gtk+ = 1.1.13, glib = 1.1.13",
-- added "Requires: gtk+ = 1.1.12, glib = 1.1.12",
+- changes in %install (use DESTDIR).
 
 * Fri Sep 25 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.8.1-1]
