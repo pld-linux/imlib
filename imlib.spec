@@ -79,7 +79,7 @@ CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
 ./configure %{_target} \
 	--prefix=/usr/X11R6 \
 	--sysconfdir=/etc/X11/GNOME \
-	--datadir=/usr/share
+	--datadir=%{_datadir}
 make
 			    
 %install
@@ -111,7 +111,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) /usr/X11R6/bin/imlib-config
 
 /usr/X11R6/include/*
-/usr/share/aclocal/*
+%{_datadir}/aclocal/*
 
 %files static
 %defattr(644,root,root,755)
@@ -156,7 +156,7 @@ rm -rf $RPM_BUILD_ROOT
 
 * Fri Sep 25 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.8.1-1]
-- added missing /usr/share/aclocal/* files to devel,
+- added missing %{_datadir}/aclocal/* files to devel,
 - files from /usr/etc moved to /etc and marked as %config,
 - changed prefix to /usr/X11R6.
 
