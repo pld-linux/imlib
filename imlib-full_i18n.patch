@@ -5862,17 +5862,16 @@ diff -Nru imlib-1.9.10/utils/imlib_config.c imlib-1.9.10.new/utils/imlib_config.
  #include <locale.h>
  #ifdef ENABLE_NLS
  #    include <libintl.h>
-@@ -1499,6 +1496,13 @@
+@@ -1499,6 +1496,12 @@
  int
  main(int argc, char **argv)
  {
-+
 +#ifdef ENABLE_NLS
 +   setlocale(LC_ALL,"");
 +   bindtextdomain(PACKAGE, GNOMELOCALEDIR);
 +   textdomain(PACKAGE); 
 +#endif
 +
+    gtk_set_locale();
     gtk_init(&argc, &argv);
     gdk_imlib_init();
-    list_vis();
