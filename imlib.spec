@@ -1,12 +1,13 @@
 Summary:	Image loading and rendering library for X11R6
 Summary(pl):	Biblioteki do renderowania i ³adowania grafiki pod X11R6
 Name:		imlib 
-Version:	1.9.4
-Release:	4
+Version:	1.9.5
+Release:	1
 Copyright:	LGPL
 Group:		X11/Libraries
 Group(pl):	X11/Biblioteki
-Source:		ftp://ftp.gnome.org/pub/GNOME/source/%{name}/%{name}-%{version}.tar.gz
+Source:		ftp://ftp.gnome.org/pub/GNOME/source/imlib/%{name}/%{name}-%{version}.tar.gz
+Patch:		imlib-16bppgrabfix.patch
 URL:		http://www.labs.redhat.com/imlib/
 BuildPrereq:	glib-devel 
 BuildPrereq:	gtk+-devel 
@@ -16,8 +17,9 @@ BuildPrereq:	libtiff-devel
 BuildPrereq:	libpng-devel
 BuildRoot:	/tmp/%{name}-%{version}-root
 
-%define _prefix  /usr/X11R6
-%define _datadir /usr/share
+%define		_prefix		/usr/X11R6
+%define		_datadir	/usr/share
+%define		_sysconfdir	/etc/X11
 
 %description
 Imlib is an advanced replacement library for libraries like libXpm that
@@ -27,7 +29,7 @@ speed.
 %description -l pl
 Imlib jest zaawansowanym zamiennikiem bibliotek typu libXpm.
 
-%package	cfgeditor
+%package cfgeditor
 Summary:	Imlib configuration editor
 Summary(pl):	Edytor konfiguracji do biblioteki imlib
 Group:		X11/Utilities
@@ -45,7 +47,7 @@ imlib kolorów, korekcji gamma i innych.
 The imlib_config program allows you to control the way imlib uses
 color and handles gamma correction/etc.
 
-%package	devel
+%package devel
 Summary:	Imlib header files and development documentation
 Summary(pl):	Pliki nag³ówkowe oraz dokumentacja do imlib
 Group:		X11/Development/Libraries
@@ -58,7 +60,7 @@ Header files and development documentation for Imlib.
 %description devel -l pl
 Pliki nag³ówkowe oraz dokumentacja do biblioteki Imlib.
 
-%package	static
+%package static
 Summary:	Imlib static libraries
 Summary(pl):	Biblioteki statyczne imlib
 Group:		X11/Development/Libraries
@@ -73,32 +75,30 @@ Biblioteki statyczne imlib.
 
 %prep
 %setup -q
+%patch -p1
 
 %build
-CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
-./configure %{_target_platform} \
-	--prefix=%{_prefix} \
-	--sysconfdir=/etc/X11/imlib \
-	--datadir=%{_datadir}
+LDFLAGS="-s"; export LDFLAGS
+%configure
+
 make
 			    
 %install
 rm -rf $RPM_BUILD_ROOT
-
 make install DESTDIR=$RPM_BUILD_ROOT
 
 strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*.so.*
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
+
+%clean
+rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so.*
-%config /etc/X11/imlib/*
+%config /etc/X11/*
 
 %files cfgeditor
 %defattr(644,root,root,755)
