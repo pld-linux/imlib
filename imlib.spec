@@ -120,10 +120,3 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 
 %{_libdir}/lib*.a
-
-%changelog
-* Mon May 24 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [1.9.4-3]
-- spec based on RH version,
-- rewrirted by Piotr Czerwiñski <pius@pld.org.pl> and me,
-- pl translation Wojtek ¦lusarczyk <wojtek@shadow.eu.org>.
