@@ -84,11 +84,11 @@ cores e trata correção gamma, etc.
 
 %package devel
 Summary:	Imlib header files and development documentation
-Summary(es):	Archivos de inclusión, bibliotecas y documentación para Imlib.
+Summary(es):	Archivos de inclusión, bibliotecas y documentación para Imlib
 Summary(fr):	Fichiers entête pour Imlib
 Summary(ko):	Imlib ÀÀ¿ëÇÁ·Î±×·¥µéÀ» À§ÇÑ °³¹ß µµ±¸
 Summary(pl):	Pliki nag³ówkowe oraz dokumentacja do imlib
-Summary(pt_BR):	Arquivos de inclusão, bibliotecas e documentação para a Imlib.
+Summary(pt_BR):	Arquivos de inclusão, bibliotecas e documentação para a Imlib
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}
 # Every program using imlib should get a list of libraries to link with by
