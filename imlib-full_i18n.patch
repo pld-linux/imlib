@@ -1,16 +1,16 @@
-diff -Nru imlib-1.9.8.1/Makefile.am imlib-1.9.8.1.new/Makefile.am
---- imlib-1.9.8.1/Makefile.am	Sun Aug 20 21:57:47 2000
-+++ imlib-1.9.8.1.new/Makefile.am	Sun Aug 20 20:02:06 2000
+diff -Nru imlib-1.9.10/Makefile.am imlib-1.9.10.new/Makefile.am
+--- imlib-1.9.10/Makefile.am	Sat Sep 30 04:09:41 2000
++++ imlib-1.9.10.new/Makefile.am	Thu Apr 12 02:13:22 2001
 @@ -1,4 +1,4 @@
 -SUBDIRS = @GDK_IMLIB@ Imlib config doc
 +SUBDIRS = intl po @GDK_IMLIB@ Imlib config doc
  bin_SCRIPTS = imlib-config
  
- EXTRA_DIST = imlib.spec.in imlib.m4 configure configure.in
-diff -Nru imlib-1.9.8.1/config.h.in imlib-1.9.8.1.new/config.h.in
---- imlib-1.9.8.1/config.h.in	Sun Aug 20 21:57:47 2000
-+++ imlib-1.9.8.1.new/config.h.in	Sun Aug 20 20:58:45 2000
-@@ -58,3 +58,8 @@
+ EXTRA_DIST = imlib.spec.in imlib.m4 configure configure.in \
+diff -Nru imlib-1.9.10/config.h.in imlib-1.9.10.new/config.h.in
+--- imlib-1.9.10/config.h.in	Wed Mar 28 06:08:17 2001
++++ imlib-1.9.10.new/config.h.in	Thu Apr 12 02:13:22 2001
+@@ -61,3 +61,8 @@
  /* Version number of package */
  #undef VERSION
  
@@ -19,9 +19,9 @@ diff -Nru imlib-1.9.8.1/config.h.in imlib-1.9.8.1.new/config.h.in
 +#undef HAVE_CATGETS
 +#undef HAVE_GETTEXT
 +#undef HAVE_LC_MESSAGES
-diff -Nru imlib-1.9.8.1/configure.in imlib-1.9.8.1.new/configure.in
---- imlib-1.9.8.1/configure.in	Sun Aug 20 21:57:47 2000
-+++ imlib-1.9.8.1.new/configure.in	Sun Aug 20 20:55:16 2000
+diff -Nru imlib-1.9.10/configure.in imlib-1.9.10.new/configure.in
+--- imlib-1.9.10/configure.in	Wed Mar 28 06:10:41 2001
++++ imlib-1.9.10.new/configure.in	Thu Apr 12 02:15:09 2001
 @@ -13,6 +13,9 @@
  dnl Initialize maintainer mode
  AM_MAINTAINER_MODE
@@ -32,11 +32,10 @@ diff -Nru imlib-1.9.8.1/configure.in imlib-1.9.8.1.new/configure.in
  dnl Give the user an option to compile without shared memory support,
  dnl incase it is broken for example.
  AC_ARG_ENABLE(shm, [  --enable-shm            support shared memory if available [default=yes]], echo $enable_shm, enable_shm="yes")
-@@ -342,18 +345,14 @@
- AC_SUBST(X_LIBS)
+@@ -344,19 +347,16 @@
  AC_SUBST(X_EXTRA_LIBS)
  
--AC_OUTPUT([
+ AC_OUTPUT([
 -imlib.spec
 -gdk_imlib/Makefile 
 -Imlib/Makefile 
@@ -45,31 +44,35 @@ diff -Nru imlib-1.9.8.1/configure.in imlib-1.9.8.1.new/configure.in
 -doc/Makefile 
 -Makefile 
 -imlib-config 
+-imlib.pc
+-imlibgdk.pc
 -], [
 -case "$CONFIG_FILES" in
 - *imlib-config*)
 -    chmod +x imlib-config
 -    ;;
 -esac])
-+AC_OUTPUT( \
-+	gdk_imlib/Makefile \
-+	Imlib/Makefile \
-+	utils/Makefile \
-+	config/Makefile \
-+	doc/Makefile \
-+	Makefile \
-+	intl/Makefile \
-+	po/Makefile.in \
-+	imlib.spec \
-+	imlib-config)
-diff -Nru imlib-1.9.8.1/po/POTFILES.in imlib-1.9.8.1.new/po/POTFILES.in
---- imlib-1.9.8.1/po/POTFILES.in	Thu Jan  1 01:00:00 1970
-+++ imlib-1.9.8.1.new/po/POTFILES.in	Mon Feb  8 05:01:24 1999
++	imlib.spec
++	gdk_imlib/Makefile 
++	Imlib/Makefile 
++	utils/Makefile 
++	config/Makefile 
++	doc/Makefile 
++	Makefile 
++	imlib-config 
++	imlib.pc
++	imlibgdk.pc
++	intl/Makefile
++	po/Makefile.in
++])
+diff -Nru imlib-1.9.10/po/POTFILES.in imlib-1.9.10.new/po/POTFILES.in
+--- imlib-1.9.10/po/POTFILES.in	Thu Jan  1 01:00:00 1970
++++ imlib-1.9.10.new/po/POTFILES.in	Thu Apr 12 02:13:22 2001
 @@ -0,0 +1 @@
 +utils/imlib_config.c
-diff -Nru imlib-1.9.8.1/po/bg.po imlib-1.9.8.1.new/po/bg.po
---- imlib-1.9.8.1/po/bg.po	Thu Jan  1 01:00:00 1970
-+++ imlib-1.9.8.1.new/po/bg.po	Sun Apr 30 00:44:33 2000
+diff -Nru imlib-1.9.10/po/bg.po imlib-1.9.10.new/po/bg.po
+--- imlib-1.9.10/po/bg.po	Thu Jan  1 01:00:00 1970
++++ imlib-1.9.10.new/po/bg.po	Thu Apr 12 02:13:22 2001
 @@ -0,0 +1,238 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) 2000 Free Software Foundation, Inc.
@@ -309,9 +312,9 @@ diff -Nru imlib-1.9.8.1/po/bg.po imlib-1.9.8.1.new/po/bg.po
 +#: utils/imlib_config.c:1560
 +msgid "Force Visual ID"
 +msgstr "Íàëîæè çðèòåëíî ID"
-diff -Nru imlib-1.9.8.1/po/ca.po imlib-1.9.8.1.new/po/ca.po
---- imlib-1.9.8.1/po/ca.po	Thu Jan  1 01:00:00 1970
-+++ imlib-1.9.8.1.new/po/ca.po	Sun Apr 30 00:44:33 2000
+diff -Nru imlib-1.9.10/po/ca.po imlib-1.9.10.new/po/ca.po
+--- imlib-1.9.10/po/ca.po	Thu Jan  1 01:00:00 1970
++++ imlib-1.9.10.new/po/ca.po	Thu Apr 12 02:13:22 2001
 @@ -0,0 +1,227 @@
 +# imlib translation to catalan.
 +# Copyright (C) 2000 Free Software Foundation, Inc.
@@ -540,9 +543,9 @@ diff -Nru imlib-1.9.8.1/po/ca.po imlib-1.9.8.1.new/po/ca.po
 +#: utils/imlib_config.c:1560
 +msgid "Force Visual ID"
 +msgstr "Imposa l'ID visual"
-diff -Nru imlib-1.9.8.1/po/da.po imlib-1.9.8.1.new/po/da.po
---- imlib-1.9.8.1/po/da.po	Thu Jan  1 01:00:00 1970
-+++ imlib-1.9.8.1.new/po/da.po	Sun Apr 30 00:44:33 2000
+diff -Nru imlib-1.9.10/po/da.po imlib-1.9.10.new/po/da.po
+--- imlib-1.9.10/po/da.po	Thu Jan  1 01:00:00 1970
++++ imlib-1.9.10.new/po/da.po	Thu Apr 12 02:13:22 2001
 @@ -0,0 +1,228 @@
 +# Danish translation of imlib/Dansk oversættelse af imlib.
 +# Copyright (C) 1999 Free Software Foundation, Inc.
@@ -772,9 +775,9 @@ diff -Nru imlib-1.9.8.1/po/da.po imlib-1.9.8.1.new/po/da.po
 +#: utils/imlib_config.c:1560
 +msgid "Force Visual ID"
 +msgstr "Tving visuel ID"
-diff -Nru imlib-1.9.8.1/po/de.po imlib-1.9.8.1.new/po/de.po
---- imlib-1.9.8.1/po/de.po	Thu Jan  1 01:00:00 1970
-+++ imlib-1.9.8.1.new/po/de.po	Sun Apr 30 00:44:33 2000
+diff -Nru imlib-1.9.10/po/de.po imlib-1.9.10.new/po/de.po
+--- imlib-1.9.10/po/de.po	Thu Jan  1 01:00:00 1970
++++ imlib-1.9.10.new/po/de.po	Thu Apr 12 02:13:22 2001
 @@ -0,0 +1,227 @@
 +# German translation for imlib / Deutsche Übersetzung für imlib
 +# Copyright (C) 2000 Free Software Foundation, Inc.
@@ -1003,9 +1006,9 @@ diff -Nru imlib-1.9.8.1/po/de.po imlib-1.9.8.1.new/po/de.po
 +#: utils/imlib_config.c:1560
 +msgid "Force Visual ID"
 +msgstr "Erzwinge visuelle ID"
-diff -Nru imlib-1.9.8.1/po/eo.po imlib-1.9.8.1.new/po/eo.po
---- imlib-1.9.8.1/po/eo.po	Thu Jan  1 01:00:00 1970
-+++ imlib-1.9.8.1.new/po/eo.po	Sun Apr 30 00:44:33 2000
+diff -Nru imlib-1.9.10/po/eo.po imlib-1.9.10.new/po/eo.po
+--- imlib-1.9.10/po/eo.po	Thu Jan  1 01:00:00 1970
++++ imlib-1.9.10.new/po/eo.po	Thu Apr 12 02:13:22 2001
 @@ -0,0 +1,226 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) 2000, Mandrakesoft
@@ -1233,9 +1236,9 @@ diff -Nru imlib-1.9.8.1/po/eo.po imlib-1.9.8.1.new/po/eo.po
 +#: utils/imlib_config.c:1560
 +msgid "Force Visual ID"
 +msgstr ""
-diff -Nru imlib-1.9.8.1/po/es.po imlib-1.9.8.1.new/po/es.po
---- imlib-1.9.8.1/po/es.po	Thu Jan  1 01:00:00 1970
-+++ imlib-1.9.8.1.new/po/es.po	Sun Apr 30 00:44:33 2000
+diff -Nru imlib-1.9.10/po/es.po imlib-1.9.10.new/po/es.po
+--- imlib-1.9.10/po/es.po	Thu Jan  1 01:00:00 1970
++++ imlib-1.9.10.new/po/es.po	Thu Apr 12 02:13:22 2001
 @@ -0,0 +1,227 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR Free Software Foundation, Inc.
@@ -1464,9 +1467,9 @@ diff -Nru imlib-1.9.8.1/po/es.po imlib-1.9.8.1.new/po/es.po
 +#: utils/imlib_config.c:1560
 +msgid "Force Visual ID"
 +msgstr "Forzar \"Visual ID\""
-diff -Nru imlib-1.9.8.1/po/fi.po imlib-1.9.8.1.new/po/fi.po
---- imlib-1.9.8.1/po/fi.po	Thu Jan  1 01:00:00 1970
-+++ imlib-1.9.8.1.new/po/fi.po	Sun Apr 30 00:44:33 2000
+diff -Nru imlib-1.9.10/po/fi.po imlib-1.9.10.new/po/fi.po
+--- imlib-1.9.10/po/fi.po	Thu Jan  1 01:00:00 1970
++++ imlib-1.9.10.new/po/fi.po	Thu Apr 12 02:13:22 2001
 @@ -0,0 +1,227 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR Free Software Foundation, Inc.
@@ -1695,9 +1698,9 @@ diff -Nru imlib-1.9.8.1/po/fi.po imlib-1.9.8.1.new/po/fi.po
 +#: utils/imlib_config.c:1560
 +msgid "Force Visual ID"
 +msgstr "Pakota näytön ID"
-diff -Nru imlib-1.9.8.1/po/fr.po imlib-1.9.8.1.new/po/fr.po
---- imlib-1.9.8.1/po/fr.po	Thu Jan  1 01:00:00 1970
-+++ imlib-1.9.8.1.new/po/fr.po	Sun Apr 30 00:44:33 2000
+diff -Nru imlib-1.9.10/po/fr.po imlib-1.9.10.new/po/fr.po
+--- imlib-1.9.10/po/fr.po	Thu Jan  1 01:00:00 1970
++++ imlib-1.9.10.new/po/fr.po	Thu Apr 12 02:13:22 2001
 @@ -0,0 +1,227 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR Free Software Foundation, Inc.
@@ -1926,9 +1929,9 @@ diff -Nru imlib-1.9.8.1/po/fr.po imlib-1.9.8.1.new/po/fr.po
 +#: utils/imlib_config.c:1560
 +msgid "Force Visual ID"
 +msgstr "Forcer le \"Visual ID\""
-diff -Nru imlib-1.9.8.1/po/gl.po imlib-1.9.8.1.new/po/gl.po
---- imlib-1.9.8.1/po/gl.po	Thu Jan  1 01:00:00 1970
-+++ imlib-1.9.8.1.new/po/gl.po	Sun Apr 30 00:44:33 2000
+diff -Nru imlib-1.9.10/po/gl.po imlib-1.9.10.new/po/gl.po
+--- imlib-1.9.10/po/gl.po	Thu Jan  1 01:00:00 1970
++++ imlib-1.9.10.new/po/gl.po	Thu Apr 12 02:13:22 2001
 @@ -0,0 +1,226 @@
 +# Galician translation of imlib.
 +# Copyright (C) 2000 Jesús Bravo Álvarez.
@@ -2156,9 +2159,9 @@ diff -Nru imlib-1.9.8.1/po/gl.po imlib-1.9.8.1.new/po/gl.po
 +#: utils/imlib_config.c:1560
 +msgid "Force Visual ID"
 +msgstr "Forzar ID Visual"
-diff -Nru imlib-1.9.8.1/po/hr.po imlib-1.9.8.1.new/po/hr.po
---- imlib-1.9.8.1/po/hr.po	Thu Jan  1 01:00:00 1970
-+++ imlib-1.9.8.1.new/po/hr.po	Sun Apr 30 00:44:33 2000
+diff -Nru imlib-1.9.10/po/hr.po imlib-1.9.10.new/po/hr.po
+--- imlib-1.9.10/po/hr.po	Thu Jan  1 01:00:00 1970
++++ imlib-1.9.10.new/po/hr.po	Thu Apr 12 02:13:22 2001
 @@ -0,0 +1,226 @@
 +# KTranslator Generated File
 +# Copyright (C) 2000 Free Software Foundation, Inc.
@@ -2386,9 +2389,9 @@ diff -Nru imlib-1.9.8.1/po/hr.po imlib-1.9.8.1.new/po/hr.po
 +#: utils/imlib_config.c:1560
 +msgid "Force Visual ID"
 +msgstr ""
-diff -Nru imlib-1.9.8.1/po/hu.po imlib-1.9.8.1.new/po/hu.po
---- imlib-1.9.8.1/po/hu.po	Thu Jan  1 01:00:00 1970
-+++ imlib-1.9.8.1.new/po/hu.po	Sun Apr 30 00:44:33 2000
+diff -Nru imlib-1.9.10/po/hu.po imlib-1.9.10.new/po/hu.po
+--- imlib-1.9.10/po/hu.po	Thu Jan  1 01:00:00 1970
++++ imlib-1.9.10.new/po/hu.po	Thu Apr 12 02:13:22 2001
 @@ -0,0 +1,226 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) 1999 MandrakeSoft
@@ -2616,9 +2619,9 @@ diff -Nru imlib-1.9.8.1/po/hu.po imlib-1.9.8.1.new/po/hu.po
 +#: utils/imlib_config.c:1560
 +msgid "Force Visual ID"
 +msgstr "Visual ID erûltetése"
-diff -Nru imlib-1.9.8.1/po/id.po imlib-1.9.8.1.new/po/id.po
---- imlib-1.9.8.1/po/id.po	Thu Jan  1 01:00:00 1970
-+++ imlib-1.9.8.1.new/po/id.po	Sun Apr 30 00:44:33 2000
+diff -Nru imlib-1.9.10/po/id.po imlib-1.9.10.new/po/id.po
+--- imlib-1.9.10/po/id.po	Thu Jan  1 01:00:00 1970
++++ imlib-1.9.10.new/po/id.po	Thu Apr 12 02:13:22 2001
 @@ -0,0 +1,226 @@
 +# IMLIB
 +# Copyright (C) 1999 Free Software Foundation, Inc.
@@ -2846,9 +2849,9 @@ diff -Nru imlib-1.9.8.1/po/id.po imlib-1.9.8.1.new/po/id.po
 +#: utils/imlib_config.c:1560
 +msgid "Force Visual ID"
 +msgstr "Gunakan ID Visual"
-diff -Nru imlib-1.9.8.1/po/it.po imlib-1.9.8.1.new/po/it.po
---- imlib-1.9.8.1/po/it.po	Thu Jan  1 01:00:00 1970
-+++ imlib-1.9.8.1.new/po/it.po	Sun Apr 30 00:44:33 2000
+diff -Nru imlib-1.9.10/po/it.po imlib-1.9.10.new/po/it.po
+--- imlib-1.9.10/po/it.po	Thu Jan  1 01:00:00 1970
++++ imlib-1.9.10.new/po/it.po	Thu Apr 12 02:13:22 2001
 @@ -0,0 +1,226 @@
 +# Italian Translation of Imlib
 +# Copyright (C) 1999 Free Software Foundation, Inc.
@@ -3076,9 +3079,9 @@ diff -Nru imlib-1.9.8.1/po/it.po imlib-1.9.8.1.new/po/it.po
 +#: utils/imlib_config.c:1560
 +msgid "Force Visual ID"
 +msgstr "Forza ID Visivo"
-diff -Nru imlib-1.9.8.1/po/lt.po imlib-1.9.8.1.new/po/lt.po
---- imlib-1.9.8.1/po/lt.po	Thu Jan  1 01:00:00 1970
-+++ imlib-1.9.8.1.new/po/lt.po	Sun Apr 30 00:44:33 2000
+diff -Nru imlib-1.9.10/po/lt.po imlib-1.9.10.new/po/lt.po
+--- imlib-1.9.10/po/lt.po	Thu Jan  1 01:00:00 1970
++++ imlib-1.9.10.new/po/lt.po	Thu Apr 12 02:13:22 2001
 @@ -0,0 +1,226 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR Free Software Foundation, Inc.
@@ -3306,9 +3309,9 @@ diff -Nru imlib-1.9.8.1/po/lt.po imlib-1.9.8.1.new/po/lt.po
 +#: utils/imlib_config.c:1560
 +msgid "Force Visual ID"
 +msgstr "Priverstinis praëjimas per vaizdiná ID"
-diff -Nru imlib-1.9.8.1/po/nl.po imlib-1.9.8.1.new/po/nl.po
---- imlib-1.9.8.1/po/nl.po	Thu Jan  1 01:00:00 1970
-+++ imlib-1.9.8.1.new/po/nl.po	Sun Apr 30 00:44:33 2000
+diff -Nru imlib-1.9.10/po/nl.po imlib-1.9.10.new/po/nl.po
+--- imlib-1.9.10/po/nl.po	Thu Jan  1 01:00:00 1970
++++ imlib-1.9.10.new/po/nl.po	Thu Apr 12 02:13:22 2001
 @@ -0,0 +1,226 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR Free Software Foundation, Inc.
@@ -3536,9 +3539,9 @@ diff -Nru imlib-1.9.8.1/po/nl.po imlib-1.9.8.1.new/po/nl.po
 +#: utils/imlib_config.c:1560
 +msgid "Force Visual ID"
 +msgstr "Visueel ID forceren"
-diff -Nru imlib-1.9.8.1/po/no.po imlib-1.9.8.1.new/po/no.po
---- imlib-1.9.8.1/po/no.po	Thu Jan  1 01:00:00 1970
-+++ imlib-1.9.8.1.new/po/no.po	Sun Apr 30 00:44:33 2000
+diff -Nru imlib-1.9.10/po/no.po imlib-1.9.10.new/po/no.po
+--- imlib-1.9.10/po/no.po	Thu Jan  1 01:00:00 1970
++++ imlib-1.9.10.new/po/no.po	Thu Apr 12 02:13:22 2001
 @@ -0,0 +1,222 @@
 +msgid ""
 +msgstr ""
@@ -3762,9 +3765,9 @@ diff -Nru imlib-1.9.8.1/po/no.po imlib-1.9.8.1.new/po/no.po
 +#: utils/imlib_config.c:1560
 +msgid "Force Visual ID"
 +msgstr "Tving visuell ID"
-diff -Nru imlib-1.9.8.1/po/pl.po imlib-1.9.8.1.new/po/pl.po
---- imlib-1.9.8.1/po/pl.po	Thu Jan  1 01:00:00 1970
-+++ imlib-1.9.8.1.new/po/pl.po	Sun Apr 30 00:44:33 2000
+diff -Nru imlib-1.9.10/po/pl.po imlib-1.9.10.new/po/pl.po
+--- imlib-1.9.10/po/pl.po	Thu Jan  1 01:00:00 1970
++++ imlib-1.9.10.new/po/pl.po	Thu Apr 12 02:13:22 2001
 @@ -0,0 +1,226 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR Free Software Foundation, Inc.
@@ -3992,9 +3995,9 @@ diff -Nru imlib-1.9.8.1/po/pl.po imlib-1.9.8.1.new/po/pl.po
 +#: utils/imlib_config.c:1560
 +msgid "Force Visual ID"
 +msgstr "Wymu¶ wizual ID"
-diff -Nru imlib-1.9.8.1/po/pt.po imlib-1.9.8.1.new/po/pt.po
---- imlib-1.9.8.1/po/pt.po	Thu Jan  1 01:00:00 1970
-+++ imlib-1.9.8.1.new/po/pt.po	Sun Apr 30 00:44:33 2000
+diff -Nru imlib-1.9.10/po/pt.po imlib-1.9.10.new/po/pt.po
+--- imlib-1.9.10/po/pt.po	Thu Jan  1 01:00:00 1970
++++ imlib-1.9.10.new/po/pt.po	Thu Apr 12 02:13:22 2001
 @@ -0,0 +1,227 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) 2000 Free Software Foundation, Inc.
@@ -4223,9 +4226,9 @@ diff -Nru imlib-1.9.8.1/po/pt.po imlib-1.9.8.1.new/po/pt.po
 +#: utils/imlib_config.c:1560
 +msgid "Force Visual ID"
 +msgstr "Forçar ID visual"
-diff -Nru imlib-1.9.8.1/po/ro.po imlib-1.9.8.1.new/po/ro.po
---- imlib-1.9.8.1/po/ro.po	Thu Jan  1 01:00:00 1970
-+++ imlib-1.9.8.1.new/po/ro.po	Sun Apr 30 00:44:33 2000
+diff -Nru imlib-1.9.10/po/ro.po imlib-1.9.10.new/po/ro.po
+--- imlib-1.9.10/po/ro.po	Thu Jan  1 01:00:00 1970
++++ imlib-1.9.10.new/po/ro.po	Thu Apr 12 02:13:23 2001
 @@ -0,0 +1,226 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) 1999 Free Software Foundation, Inc.
@@ -4453,9 +4456,9 @@ diff -Nru imlib-1.9.8.1/po/ro.po imlib-1.9.8.1.new/po/ro.po
 +#: utils/imlib_config.c:1560
 +msgid "Force Visual ID"
 +msgstr "Forteaza ID-ul vizual"
-diff -Nru imlib-1.9.8.1/po/sk.po imlib-1.9.8.1.new/po/sk.po
---- imlib-1.9.8.1/po/sk.po	Thu Jan  1 01:00:00 1970
-+++ imlib-1.9.8.1.new/po/sk.po	Sun Apr 30 00:44:33 2000
+diff -Nru imlib-1.9.10/po/sk.po imlib-1.9.10.new/po/sk.po
+--- imlib-1.9.10/po/sk.po	Thu Jan  1 01:00:00 1970
++++ imlib-1.9.10.new/po/sk.po	Thu Apr 12 02:13:23 2001
 @@ -0,0 +1,227 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR Free Software Foundation, Inc.
@@ -4684,9 +4687,9 @@ diff -Nru imlib-1.9.8.1/po/sk.po imlib-1.9.8.1.new/po/sk.po
 +#: utils/imlib_config.c:1560
 +msgid "Force Visual ID"
 +msgstr "Pou¾i vizuálne ID"
-diff -Nru imlib-1.9.8.1/po/sv.po imlib-1.9.8.1.new/po/sv.po
---- imlib-1.9.8.1/po/sv.po	Thu Jan  1 01:00:00 1970
-+++ imlib-1.9.8.1.new/po/sv.po	Sun Apr 30 00:44:33 2000
+diff -Nru imlib-1.9.10/po/sv.po imlib-1.9.10.new/po/sv.po
+--- imlib-1.9.10/po/sv.po	Thu Jan  1 01:00:00 1970
++++ imlib-1.9.10.new/po/sv.po	Thu Apr 12 02:13:23 2001
 @@ -0,0 +1,228 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) 2000 Free Software Foundation, Inc.
@@ -4916,9 +4919,9 @@ diff -Nru imlib-1.9.8.1/po/sv.po imlib-1.9.8.1.new/po/sv.po
 +#: utils/imlib_config.c:1560
 +msgid "Force Visual ID"
 +msgstr "Tvinga Visual-ID"
-diff -Nru imlib-1.9.8.1/po/tr.po imlib-1.9.8.1.new/po/tr.po
---- imlib-1.9.8.1/po/tr.po	Thu Jan  1 01:00:00 1970
-+++ imlib-1.9.8.1.new/po/tr.po	Sun Apr 30 00:44:33 2000
+diff -Nru imlib-1.9.10/po/tr.po imlib-1.9.10.new/po/tr.po
+--- imlib-1.9.10/po/tr.po	Thu Jan  1 01:00:00 1970
++++ imlib-1.9.10.new/po/tr.po	Thu Apr 12 02:13:23 2001
 @@ -0,0 +1,226 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR Free Software Foundation, Inc.
@@ -5146,9 +5149,9 @@ diff -Nru imlib-1.9.8.1/po/tr.po imlib-1.9.8.1.new/po/tr.po
 +#: utils/imlib_config.c:1560
 +msgid "Force Visual ID"
 +msgstr "Görsel ID"
-diff -Nru imlib-1.9.8.1/po/uk.po imlib-1.9.8.1.new/po/uk.po
---- imlib-1.9.8.1/po/uk.po	Thu Jan  1 01:00:00 1970
-+++ imlib-1.9.8.1.new/po/uk.po	Sun Apr 30 00:44:33 2000
+diff -Nru imlib-1.9.10/po/uk.po imlib-1.9.10.new/po/uk.po
+--- imlib-1.9.10/po/uk.po	Thu Jan  1 01:00:00 1970
++++ imlib-1.9.10.new/po/uk.po	Thu Apr 12 02:13:23 2001
 @@ -0,0 +1,226 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR Free Software Foundation, Inc.
@@ -5376,9 +5379,9 @@ diff -Nru imlib-1.9.8.1/po/uk.po imlib-1.9.8.1.new/po/uk.po
 +#: utils/imlib_config.c:1560
 +msgid "Force Visual ID"
 +msgstr "ðÒÉÍÕÓÏ×Å ×ÉËÏÒÉÓÔÁÎÎÑ ×¦ÚÕÌØÎÏÇÏ ID"
-diff -Nru imlib-1.9.8.1/po/wa.po imlib-1.9.8.1.new/po/wa.po
---- imlib-1.9.8.1/po/wa.po	Thu Jan  1 01:00:00 1970
-+++ imlib-1.9.8.1.new/po/wa.po	Sun Apr 30 00:44:33 2000
+diff -Nru imlib-1.9.10/po/wa.po imlib-1.9.10.new/po/wa.po
+--- imlib-1.9.10/po/wa.po	Thu Jan  1 01:00:00 1970
++++ imlib-1.9.10.new/po/wa.po	Thu Apr 12 02:13:23 2001
 @@ -0,0 +1,228 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) 1999 Free Software Foundation, Inc.
@@ -5608,9 +5611,9 @@ diff -Nru imlib-1.9.8.1/po/wa.po imlib-1.9.8.1.new/po/wa.po
 +#: utils/imlib_config.c:1560
 +msgid "Force Visual ID"
 +msgstr "Foirci li \"Visual ID\""
-diff -Nru imlib-1.9.8.1/po/zh_CN.GB2312.po imlib-1.9.8.1.new/po/zh_CN.GB2312.po
---- imlib-1.9.8.1/po/zh_CN.GB2312.po	Thu Jan  1 01:00:00 1970
-+++ imlib-1.9.8.1.new/po/zh_CN.GB2312.po	Sun Apr 30 00:44:33 2000
+diff -Nru imlib-1.9.10/po/zh_CN.GB2312.po imlib-1.9.10.new/po/zh_CN.GB2312.po
+--- imlib-1.9.10/po/zh_CN.GB2312.po	Thu Jan  1 01:00:00 1970
++++ imlib-1.9.10.new/po/zh_CN.GB2312.po	Thu Apr 12 02:13:23 2001
 @@ -0,0 +1,225 @@
 +# imlib messages for zh_CN locale
 +# Copyright (C) 2000 Free Software Foundation, Inc.
@@ -5837,9 +5840,9 @@ diff -Nru imlib-1.9.8.1/po/zh_CN.GB2312.po imlib-1.9.8.1.new/po/zh_CN.GB2312.po
 +#: utils/imlib_config.c:1560
 +msgid "Force Visual ID"
 +msgstr "Force Visual ID"
-diff -Nru imlib-1.9.8.1/utils/Makefile.am imlib-1.9.8.1.new/utils/Makefile.am
---- imlib-1.9.8.1/utils/Makefile.am	Sun Aug 20 21:57:47 2000
-+++ imlib-1.9.8.1.new/utils/Makefile.am	Sun Aug 20 21:57:05 2000
+diff -Nru imlib-1.9.10/utils/Makefile.am imlib-1.9.10.new/utils/Makefile.am
+--- imlib-1.9.10/utils/Makefile.am	Tue Mar 30 06:54:02 1999
++++ imlib-1.9.10.new/utils/Makefile.am	Thu Apr 12 02:13:23 2001
 @@ -1,6 +1,7 @@
  INCLUDES = \
  	-I$(top_srcdir)			\
@@ -5848,9 +5851,9 @@ diff -Nru imlib-1.9.8.1/utils/Makefile.am imlib-1.9.8.1.new/utils/Makefile.am
  	@GTK_CFLAGS@
  
  bin_PROGRAMS = imlib_config
-diff -Nru imlib-1.9.8.1/utils/imlib_config.c imlib-1.9.8.1.new/utils/imlib_config.c
---- imlib-1.9.8.1/utils/imlib_config.c	Sun Aug 20 21:57:47 2000
-+++ imlib-1.9.8.1.new/utils/imlib_config.c	Sun Aug 20 21:55:53 2000
+diff -Nru imlib-1.9.10/utils/imlib_config.c imlib-1.9.10.new/utils/imlib_config.c
+--- imlib-1.9.10/utils/imlib_config.c	Sat Oct 16 11:07:39 1999
++++ imlib-1.9.10.new/utils/imlib_config.c	Thu Apr 12 02:13:23 2001
 @@ -1,7 +1,4 @@
  #include <config.h>
 -#ifndef GNOMELOCALEDIR
