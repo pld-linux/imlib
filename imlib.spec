@@ -1,10 +1,11 @@
 Summary:     Image loading and rendering library for X11R6
 Summary(pl): Biblioteki do renderowania i ³adowania plików graficznych pod X'y
 Name:        imlib 
-Version:     1.8.1
+Version:     1.8.2
 Release:     1
 Copyright:   LGPL
 Group:       X11/Libraries
+Group(pl):   X11/Biblioteki
 Source:      ftp://ftp.labs.redhat.com/pub/imlib/TAR/%{name}-%{version}.tar.gz
 Requires:    libpng, libtiff, libjpeg, zlib, libgr-progs, glib, gtk+, libungif
 Requires:    libungif, ImageMagick
@@ -24,6 +25,7 @@ Summary:	Imlib header files and development documentation
 Summary:     Imlib header files and development documentation
 Summary(pl): Pliki nag³ówkowe oraz dokumentacja do imlib
 Group:       X11/Libraries
+Group(pl):   X11/Biblioteki
 Requires:    %{name} = %{version}
 Obsoletes:   Imlib
 %description devel
@@ -37,6 +39,7 @@ Summary:	Imlib static libraries
 Summary:     Imlib static libraries
 Summary(pl): Biblioteki statyczne imlib
 Group:       X11/Libraries
+Group(pl):   X11/Biblioteki
 Requires:    %{name}-devel = %{version}
 Obsoletes:   Imlib
 %description static
@@ -50,7 +53,8 @@ Biblioteki statyczne imlib.
 
 %build
 CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
-CFLAGS="$RPM_OPT_FLAGS" ./configure \
+./configure \
+	--prefix=/usr/X11R6 \
 	--sysconfdir=/etc \
 	--datadir=/usr/share
 make
@@ -59,12 +63,9 @@ make
 rm -rf $RPM_BUILD_ROOT
 
 make install DESTDIR=$RPM_BUILD_ROOT
-make install \
-	prefix=$RPM_BUILD_ROOT/usr/X11R6 \
-	sysconfdir=$RPM_BUILD_ROOT/etc \
-	datadir=$RPM_BUILD_ROOT/usr/share
+
 strip $RPM_BUILD_ROOT/usr/X11R6/lib/lib*.so.*.*
-strip $RPM_BUILD_ROOT/usr/X11R6/{bin/imlib_config,lib/lib*.so.*.*}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -89,6 +90,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %changelog
 * Sun Jan 31 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+* Tue Dec 29 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [1.8.2-1]
+- added "Requires: gtk+ = 1.1.13, glib = 1.1.13",
+
+* Fri Sep 25 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.8.1-1]
 - added missing /usr/share/aclocal/* files to devel,
 - files from /usr/etc moved to /etc and marked as %config,
