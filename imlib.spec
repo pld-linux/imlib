@@ -79,7 +79,7 @@ Biblioteki statyczne imlib.
 
 %build
 CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
-./configure %{_target} \
+./configure %{_target_platform} \
 	--prefix=%{_prefix} \
 	--sysconfdir=/etc/X11/GNOME \
 	--datadir=%{_datadir}
