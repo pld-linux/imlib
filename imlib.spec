@@ -1,9 +1,11 @@
 Summary:	Image loading and rendering library for X11R6
+Summary(es):	Biblioteca de carga y render 3D para X11R6
 Summary(fr):	Librairie de chargement et interprétation d'images pour X11R6
 Summary(pl):	Biblioteki do renderowania i ³adowania grafiki pod X11R6
+Summary(pt_BR):	Biblioteca de carga e renderização para X11R6
 Name:		imlib
 Version:	1.9.14
-Release:	1
+Release:	2
 Epoch:		1
 License:	LGPL
 Group:		X11/Libraries
@@ -35,6 +37,11 @@ Imlib is an advanced replacement library for libraries like libXpm
 that provides many more features with much greater flexability and
 speed.
 
+%description -l es
+Imlib es una biblioteca avanzada que sustituye las bibliotecas libXpm
+que ofrece mucho más opciones/características con una flexibilidad y
+velocidad mucho mayores.
+
 %description -l fr
 Imlib est une librairie de remplacement avancée pour les librairies
 comme libXpm qui fourni plus d'atouts et beaucoup plus de flexibilité
@@ -44,9 +51,16 @@ et de vitesse.
 Imlib jest zaawansowanym zamiennikiem bibliotek typu libXpm, ze
 zwiêkszon± elastyczno¶ci± oraz prêdko¶ci±.
 
+%description -l pt_BR
+A imlib é uma biblioteca avançada que substitui as bibliotecas libXpm
+que fornece muito mais opções/características com uma flexibilidade e
+velocidade muito maiores.
+
 %package cfgeditor
 Summary:	Imlib configuration editor
+Summary(es):	Editor de configuración de imlib
 Summary(pl):	Edytor konfiguracji do biblioteki imlib
+Summary(pt_BR):	Editor da configuração da imlib
 Group:		X11/Applications
 Requires:	%{name} = %{version}
 
@@ -54,14 +68,24 @@ Requires:	%{name} = %{version}
 The imlib_config program allows you to control the way imlib uses
 color and handles gamma correction/etc.
 
+%description cfgeditor -l es
+El programa imlib_config te permite controlar como imlib usa los
+colores y manipula la corrección gamma, etc.
+
 %description cfgeditor -l pl
 Program imlib_config umo¿liwia zmianê sposobu u¿ywania przez
 bibliotekê imlib kolorów, korekcji gamma i innych.
 
+%description cfgeditor -l pt_BR
+O programa imlib_config lhe permite controlar como a imlib usa as
+cores e trata correção gamma, etc.
+
 %package devel
 Summary:	Imlib header files and development documentation
+Summary(es):	Archivos de inclusión, bibliotecas y documentación para Imlib.
 Summary(fr):	Fichiers entête pour Imlib
 Summary(pl):	Pliki nag³ówkowe oraz dokumentacja do imlib
+Summary(pt_BR):	Arquivos de inclusão, bibliotecas e documentação para a Imlib.
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}
 # Every program using imlib should get a list of libraries to link with by
@@ -78,30 +102,46 @@ Obsoletes:	libimlib1-devel
 %description devel
 Header files and development documentation for Imlib.
 
+%description devel -l es
+Archivos de inclusión, bibliotecas estáticas y documentación para
+imlib.
+
 %description devel -l fr
 Fichiers entête pour Imlib.
 
 %description devel -l pl
 Pliki nag³ówkowe oraz dokumentacja do biblioteki Imlib.
 
+%description devel -l pt_BR
+Arquivos de inclusão, bibliotecas estáticas e documentação para a
+imlib.
+
 %package static
 Summary:	Imlib static libraries
+Summary(es):	Static libraries for imlib development
 Summary(pl):	Biblioteki statyczne imlib
+Summary(pt_BR):	Bibliotecas estáticas para desenvolvimento com imlib
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}
 
 %description static
 Imlib static libraries.
 
+%description static -l es
+Static libraries for imlib development.
+
 %description static -l pl
 Biblioteki statyczne imlib.
+
+%description static -l pt_BR
+Bibliotecas estáticas para desenvolvimento com imlib.
 
 %prep
 %setup -q
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-#%patch3 -p1
+%patch3 -p1
 
 %build
 rm -rf missing
