@@ -1,0 +1,9 @@
+--- imlib-1.9.14/configure.in.orig	Tue Nov  5 16:18:24 2002
++++ imlib-1.9.14/configure.in	Tue Nov  5 16:18:39 2002
+@@ -327,6 +327,4 @@
+ 	imlib-config 
+ 	imlib.pc
+ 	imlibgdk.pc
+-	intl/Makefile
+-	po/Makefile.in
+ ])
