@@ -146,8 +146,8 @@ Bibliotecas estáticas para desenvolvimento com imlib.
 rm -rf missing
 gettextize --copy --force
 aclocal
-autoconf
-automake -a -c -f
+%{__autoconf}
+%{__automake}
 if [ -f %{_pkgconfigdir}/libpng12.pc ] ; then
 	CPPFLAGS="`pkg-config libpng12 --cflags`"
 fi
