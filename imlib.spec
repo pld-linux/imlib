@@ -2,7 +2,7 @@ Summary:	Image loading and rendering library for X11R6
 Summary(pl):	Biblioteki do renderowania i ³adowania plików graficznych pod X'y
 Name:		imlib 
 Version:	1.9.2
-Release:	1d
+Release:	1
 Copyright:	LGPL
 Group:		X11/Libraries
 Group(pl):	X11/Biblioteki
@@ -99,7 +99,7 @@ rm -rf $RPM_BUILD_ROOT
 %changelog
 * Sun Jan 31 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.9.2-1d]
-- changed Group in devel and static subpackages,
+  [1.9.2-1]
 - updated "Requires: gtk+ = 1.1.14, glib = 1.1.14".
 
 * Tue Jan 19 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
