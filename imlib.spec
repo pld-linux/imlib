@@ -1,3 +1,5 @@
+# TODO:
+# - SECURITY: http://securitytracker.com/alerts/2004/Aug/1011104.html
 Summary:	Image loading and rendering library for X11R6
 Summary(es):	Biblioteca de carga y render 3D para X11R6
 Summary(fr):	Librairie de chargement et interprétation d'images pour X11R6
