@@ -16,7 +16,7 @@ URL:		http://www.labs.redhat.com/imlib/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
-BuildRequires:	gtk+-devel 
+BuildRequires:	gtk+-devel
 BuildRequires:	libjpeg-devel >= 6b-18
 BuildRequires:	libtiff-devel
 BuildRequires:	libpng >= 1.0.8
@@ -107,7 +107,7 @@ autoconf
 automake -a -c
 %configure
 %{__make}
-			    
+
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_applnkdir}/Settings
