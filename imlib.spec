@@ -12,6 +12,7 @@ Source1:	%{name}-config.desktop
 Patch0:		%{name}-m4_fix.patch
 Patch1:		%{name}-full_i18n.patch
 Patch2:		%{name}-config.patch
+Patch3:		%{name}-ac25x.patch
 URL:		http://www.labs.redhat.com/imlib/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -98,6 +99,7 @@ Biblioteki statyczne imlib.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 rm -rf missing
