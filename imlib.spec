@@ -119,13 +119,13 @@ automake
 			    
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_applnkdir}/Settings/GNOME
+install -d $RPM_BUILD_ROOT%{_applnkdir}/Settings
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	m4datadir=%{_aclocaldir}
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Settings/GNOME
+install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Settings
 
 %find_lang %{name}
 
@@ -145,7 +145,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files cfgeditor -f %{name}.lang
 %defattr(644,root,root,755)
-%{_applnkdir}/Settings/GNOME/imlib-config.desktop
+%{_applnkdir}/Settings/imlib-config.desktop
 %attr(755,root,root) %{_bindir}/imlib_config
 
 %files devel
