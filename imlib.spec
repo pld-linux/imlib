@@ -3,14 +3,20 @@ Summary(fr):	Librairie de chargement et interprétation d'images pour X11R6
 Summary(pl):	Biblioteki do renderowania i ³adowania grafiki pod X11R6
 Name:		imlib
 Version:	1.9.8.1
-Release:	3
+Release:	4
 License:	LGPL
 Group:		X11/Libraries
 Group(pl):	X11/Biblioteki
 Source0:	ftp://ftp.gnome.org/pub/GNOME/stable/sources/imlib/%{name}-%{version}.tar.gz
 Source1:	%{name}-config.desktop
 Patch0:		%{name}-gdk.patch
+Patch1:		%{name}-palfallback.patch
+Patch2:		%{name}-m4_fix.patch
+Patch3:		%{name}-full_i18n.patch
 URL:		http://www.labs.redhat.com/imlib/
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	gettext-devel
 BuildRequires:	gtk+-devel 
 BuildRequires:	libjpeg-devel
 BuildRequires:	libtiff-devel
@@ -20,7 +26,6 @@ BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
-%define		_datadir	/usr/share
 %define		_sysconfdir	/etc/X11
 
 %description
@@ -95,12 +100,17 @@ Biblioteki statyczne imlib.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %build
+gettextize --copy --force
+aclocal
+autoconf
 automake
 LDFLAGS="-s"; export LDFLAGS
 %configure
-
 %{__make}
 			    
 %install
@@ -114,6 +124,8 @@ install -d $RPM_BUILD_ROOT%{_applnkdir}/Settings
 install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Settings
 
 strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*.so{,.*.*}
+
+%find_lang %{name}
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -129,7 +141,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libimlib-*.la
 %config %{_sysconfdir}/*
 
-%files cfgeditor
+%files cfgeditor -f %{name}.lang
 %defattr(644,root,root,755)
 %{_applnkdir}/Settings/imlib-config.desktop
 %attr(755,root,root) %{_bindir}/imlib_config
