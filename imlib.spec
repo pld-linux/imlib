@@ -2,12 +2,12 @@ Summary:	Image loading and rendering library for X11R6
 Summary(fr):	Librairie de chargement et interprétation d'images pour X11R6
 Summary(pl):	Biblioteki do renderowania i ³adowania grafiki pod X11R6
 Name:		imlib
-Version:	1.9.13
-Release:	2.1
+Version:	1.9.14
+Release:	1
 Epoch:		1
 License:	LGPL
 Group:		X11/Libraries
-Source0:	ftp://ftp.gnome.org/pub/GNOME/stable/sources/imlib/%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.gnome.org/pub/GNOME/stable/sources/imlib/%{name}-%{version}.tar.bz2
 Source1:	%{name}-config.desktop
 Patch0:		%{name}-m4_fix.patch
 Patch1:		%{name}-full_i18n.patch
@@ -99,7 +99,7 @@ Biblioteki statyczne imlib.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
+#%patch3 -p1
 
 %build
 rm -rf missing
