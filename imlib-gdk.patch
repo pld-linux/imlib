@@ -1,0 +1,12 @@
+diff -ur imlib-1.9.8.orig/gdk_imlib/Makefile.am imlib-1.9.8/gdk_imlib/Makefile.am
+--- imlib-1.9.8.orig/gdk_imlib/Makefile.am	Tue Oct 19 01:44:00 1999
++++ imlib-1.9.8/gdk_imlib/Makefile.am	Sun Feb  6 21:18:28 2000
+@@ -82,7 +82,7 @@
+ 
+ 
+ libgdk_imlib_la_LDFLAGS = -version-info 10:8:9
+-libgdk_imlib_la_LIBADD = $(GMODULE_LIBS)
++libgdk_imlib_la_LIBADD = $(GMODULE_LIBS) -L/usr/X11R6/lib -lgdk
+ 
+ 
+ include_HEADERS = gdk_imlib.h gdk_imlib_private.h gdk_imlib_types.h
