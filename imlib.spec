@@ -1,4 +1,5 @@
 Summary:	Image loading and rendering library for X11R6
+Summary(fr):	Librairie de chargement et interprétation d'images pour X11R6
 Summary(pl):	Biblioteki do renderowania i ³adowania grafiki pod X11R6
 Name:		imlib 
 Version:	1.9.7
@@ -29,6 +30,11 @@ Imlib is an advanced replacement library for libraries like libXpm that
 provides many more features with much greater flexability and
 speed.
 
+%description -l fr
+Imlib est une librairie de remplacement avancée pour les librairies comme
+libXpm qui fourni plus d'atouts et beaucoup plus de flexibilité et de
+vitesse.
+
 %description -l pl
 Imlib jest zaawansowanym zamiennikiem bibliotek typu libXpm.
 
@@ -52,6 +58,7 @@ color and handles gamma correction/etc.
 
 %package devel
 Summary:	Imlib header files and development documentation
+Summary(fr):	Fichiers entête pour Imlib
 Summary(pl):	Pliki nag³ówkowe oraz dokumentacja do imlib
 Group:		X11/Development/Libraries
 Group(pl):	X11/Programowanie/Biblioteki
@@ -59,6 +66,9 @@ Requires:	%{name} = %{version}
 
 %description devel
 Header files and development documentation for Imlib.
+
+%description l fr devel
+Fichiers entête pour Imlib.
 
 %description devel -l pl
 Pliki nag³ówkowe oraz dokumentacja do biblioteki Imlib.
