@@ -30,7 +30,6 @@ BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libimlib1
 
-%define		_prefix		/usr/X11R6
 %define		_sysconfdir	/etc/X11
 
 %description
