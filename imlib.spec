@@ -6,7 +6,7 @@ Summary(pl):	Biblioteki do renderowania i ³adowania grafiki pod X11R6
 Summary(pt_BR):	Biblioteca de carga e renderização para X11R6
 Name:		imlib
 Version:	1.9.15
-Release:	1
+Release:	2
 Epoch:		1
 License:	LGPL
 Group:		X11/Libraries
@@ -18,6 +18,7 @@ Patch1:		%{name}-full_i18n.patch
 Patch2:		%{name}-config.patch
 Patch3:		%{name}-am18.patch
 Patch4:		%{name}-intl.patch
+Patch5:		%{name}-CAN-2004-1026.patch
 URL:		http://www.labs.redhat.com/imlib/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -65,7 +66,7 @@ Summary(ko):	Imlib¶óÀÌºê·¯¸®¿ë ¼³Á¤ ÆíÁý±â
 Summary(pl):	Edytor konfiguracji do biblioteki imlib
 Summary(pt_BR):	Editor da configuração da imlib
 Group:		X11/Applications
-Requires:	%{name} = %{epoch}:%{version}
+Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description cfgeditor
 The imlib_config program allows you to control the way imlib uses
@@ -141,6 +142,7 @@ Bibliotecas estáticas para desenvolvimento com imlib.
 %patch3 -p1
 # temporary hack
 %patch4 -p1
+%patch5 -p1
 
 %build
 %{__gettextize}
