@@ -11,9 +11,7 @@ Source0:	ftp://ftp.gnome.org/pub/GNOME/stable/sources/imlib/%{name}-%{version}.t
 Source1:	imlib-config.desktop
 Patch:		imlib-gdk.patch
 URL:		http://www.labs.redhat.com/imlib/
-BuildRequires:	glib-devel 
 BuildRequires:	gtk+-devel 
-BuildRequires:	XFree86-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libtiff-devel
 BuildRequires:	libpng-devel
