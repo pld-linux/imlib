@@ -8,8 +8,12 @@ Group:		X11/Libraries
 Group(pl):	X11/Biblioteki
 Source:		ftp://ftp.gnome.org/pub/GNOME/source/%{name}/%{name}-%{version}.tar.gz
 URL:		http://www.labs.redhat.com/imlib/
-BuildPrereq:	gtk+ >= 1.1.9
+BuildPrereq:	glib-devel >= 1.1.9
+BuildPrereq:	gtk+-devel >= 1.1.9
 BuildPrereq:	XFree86-devel
+BuildPrereq:	libjpeg-devel
+BuildPrereq:	libtiff-devel
+BuildPrereq:	libpng-devel
 BuildRoot:	/tmp/%{name}-%{version}-root
 Obsoletes:	Imlib
 
