@@ -9,12 +9,12 @@ Group(pl):	X11/Biblioteki
 Source:		ftp://ftp.gnome.org/pub/GNOME/source/imlib/%{name}/%{name}-%{version}.tar.gz
 Patch:		imlib-16bppgrabfix.patch
 URL:		http://www.labs.redhat.com/imlib/
-BuildPrereq:	glib-devel 
-BuildPrereq:	gtk+-devel 
-BuildPrereq:	XFree86-devel
-BuildPrereq:	libjpeg-devel
-BuildPrereq:	libtiff-devel
-BuildPrereq:	libpng-devel
+BuildRequires:	glib-devel 
+BuildRequires:	gtk+-devel 
+BuildRequires:	XFree86-devel
+BuildRequires:	libjpeg-devel
+BuildRequires:	libtiff-devel
+BuildRequires:	libpng-devel
 BuildRoot:	/tmp/%{name}-%{version}-root
 
 %define		_prefix		/usr/X11R6
