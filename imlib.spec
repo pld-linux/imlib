@@ -40,7 +40,8 @@ comme libXpm qui fourni plus d'atouts et beaucoup plus de flexibilité
 et de vitesse.
 
 %description -l pl
-Imlib jest zaawansowanym zamiennikiem bibliotek typu libXpm.
+Imlib jest zaawansowanym zamiennikiem bibliotek typu libXpm, ze
+zwiêkszon± elastyczno¶ci± oraz prêdko¶ci±.
 
 %package cfgeditor
 Summary:	Imlib configuration editor
@@ -56,9 +57,7 @@ color and handles gamma correction/etc.
 
 %description -l pl cfgeditor
 Program imlib_config umo¿liwia zmianê sposobu u¿ywania przez
-bibliotekê imlib kolorów, korekcji gamma i innych. The imlib_config
-program allows you to control the way imlib uses color and handles
-gamma correction/etc.
+bibliotekê imlib kolorów, korekcji gamma i innych.
 
 %package devel
 Summary:	Imlib header files and development documentation
@@ -107,6 +106,7 @@ Biblioteki statyczne imlib.
 %patch1 -p1
 
 %build
+rm -rf missing
 gettextize --copy --force
 aclocal
 autoconf
