@@ -7,18 +7,6 @@ diff -Nru imlib-1.9.10/Makefile.am imlib-1.9.10.new/Makefile.am
  bin_SCRIPTS = imlib-config
  
  EXTRA_DIST = imlib.spec.in imlib.m4 configure configure.in \
-diff -Nru imlib-1.9.10/config.h.in imlib-1.9.10.new/config.h.in
---- imlib-1.9.10/config.h.in	Wed Mar 28 06:08:17 2001
-+++ imlib-1.9.10.new/config.h.in	Thu Apr 12 02:13:22 2001
-@@ -61,3 +61,8 @@
- /* Version number of package */
- #undef VERSION
- 
-+/* gettext variables */
-+#undef ENABLE_NLS
-+#undef HAVE_CATGETS
-+#undef HAVE_GETTEXT
-+#undef HAVE_LC_MESSAGES
 diff -Nru imlib-1.9.10/configure.in imlib-1.9.10.new/configure.in
 --- imlib-1.9.10/configure.in	Wed Mar 28 06:10:41 2001
 +++ imlib-1.9.10.new/configure.in	Thu Apr 12 02:15:09 2001
@@ -26,7 +14,7 @@ diff -Nru imlib-1.9.10/configure.in imlib-1.9.10.new/configure.in
  dnl Initialize maintainer mode
  AM_MAINTAINER_MODE
  
-+ALL_LINGUAS="bg ca da de eo es fi fr gl hr hu id it lt nl no pl pt ro sk sv tr uk wa zh_CN.GB2312"
++ALL_LINGUAS="bg ca da de eo es fi fr gl hr hu id it lt nb nl pl pt ro sk sv tr uk wa zh_CN"
 +AM_GNU_GETTEXT
 +
  dnl Give the user an option to compile without shared memory support,
@@ -3539,9 +3527,9 @@ diff -Nru imlib-1.9.10/po/nl.po imlib-1.9.10.new/po/nl.po
 +#: utils/imlib_config.c:1560
 +msgid "Force Visual ID"
 +msgstr "Visueel ID forceren"
-diff -Nru imlib-1.9.10/po/no.po imlib-1.9.10.new/po/no.po
---- imlib-1.9.10/po/no.po	Thu Jan  1 01:00:00 1970
-+++ imlib-1.9.10.new/po/no.po	Thu Apr 12 02:13:22 2001
+diff -Nru imlib-1.9.10/po/nb.po imlib-1.9.10.new/po/nb.po
+--- imlib-1.9.10/po/nb.po	Thu Jan  1 01:00:00 1970
++++ imlib-1.9.10.new/po/nb.po	Thu Apr 12 02:13:22 2001
 @@ -0,0 +1,222 @@
 +msgid ""
 +msgstr ""
@@ -5611,9 +5599,9 @@ diff -Nru imlib-1.9.10/po/wa.po imlib-1.9.10.new/po/wa.po
 +#: utils/imlib_config.c:1560
 +msgid "Force Visual ID"
 +msgstr "Foirci li \"Visual ID\""
-diff -Nru imlib-1.9.10/po/zh_CN.GB2312.po imlib-1.9.10.new/po/zh_CN.GB2312.po
---- imlib-1.9.10/po/zh_CN.GB2312.po	Thu Jan  1 01:00:00 1970
-+++ imlib-1.9.10.new/po/zh_CN.GB2312.po	Thu Apr 12 02:13:23 2001
+diff -Nru imlib-1.9.10/po/zh_CN.po imlib-1.9.10.new/po/zh_CN.po
+--- imlib-1.9.10/po/zh_CN.po	Thu Jan  1 01:00:00 1970
++++ imlib-1.9.10.new/po/zh_CN.po	Thu Apr 12 02:13:23 2001
 @@ -0,0 +1,225 @@
 +# imlib messages for zh_CN locale
 +# Copyright (C) 2000 Free Software Foundation, Inc.
