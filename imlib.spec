@@ -1,11 +1,12 @@
 Summary:	Image loading and rendering library for X11R6
 Summary(es):	Biblioteca de carga y render 3D para X11R6
 Summary(fr):	Librairie de chargement et interprétation d'images pour X11R6
+Summary(ko):	X11R6¸¦ À§ÇÑ ±×¸² ÀÐ±â/È­¸é¿¡ ±×·ÁÁÖ±â ¶óÀÌºê·¯¸®
 Summary(pl):	Biblioteki do renderowania i ³adowania grafiki pod X11R6
 Summary(pt_BR):	Biblioteca de carga e renderização para X11R6
 Name:		imlib
 Version:	1.9.14
-Release:	2
+Release:	5
 Epoch:		1
 License:	LGPL
 Group:		X11/Libraries
@@ -59,6 +60,7 @@ velocidade muito maiores.
 %package cfgeditor
 Summary:	Imlib configuration editor
 Summary(es):	Editor de configuración de imlib
+Summary(ko):	Imlib¶óÀÌºê·¯¸®¿ë ¼³Á¤ ÆíÁý±â
 Summary(pl):	Edytor konfiguracji do biblioteki imlib
 Summary(pt_BR):	Editor da configuração da imlib
 Group:		X11/Applications
@@ -84,6 +86,7 @@ cores e trata correção gamma, etc.
 Summary:	Imlib header files and development documentation
 Summary(es):	Archivos de inclusión, bibliotecas y documentación para Imlib.
 Summary(fr):	Fichiers entête pour Imlib
+Summary(ko):	Imlib ÀÀ¿ëÇÁ·Î±×·¥µéÀ» À§ÇÑ °³¹ß µµ±¸
 Summary(pl):	Pliki nag³ówkowe oraz dokumentacja do imlib
 Summary(pt_BR):	Arquivos de inclusão, bibliotecas e documentação para a Imlib.
 Group:		X11/Development/Libraries
@@ -151,10 +154,8 @@ rm -rf missing
 %{__aclocal}
 %{__autoconf}
 %{__automake}
-if [ -f %{_pkgconfigdir}/libpng12.pc ] ; then
-	CPPFLAGS="`pkg-config libpng12 --cflags`"
-fi
-%configure CPPFLAGS="$CPPFLAGS"
+%configure \
+	CPPFLAGS="$CPPFLAGS"
 %{__make}
 
 %install
