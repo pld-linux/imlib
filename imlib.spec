@@ -3,7 +3,7 @@ Summary(fr):	Librairie de chargement et interprétation d'images pour X11R6
 Summary(pl):	Biblioteki do renderowania i ³adowania grafiki pod X11R6
 Name:		imlib
 Version:	1.9.8
-Release:	3
+Release:	4
 License:	LGPL
 Group:		X11/Libraries
 Group(pl):	X11/Biblioteki
@@ -60,6 +60,15 @@ Summary(pl):	Pliki nag³ówkowe oraz dokumentacja do imlib
 Group:		X11/Development/Libraries
 Group(pl):	X11/Programowanie/Biblioteki
 Requires:	%{name} = %{version}
+# Every rogram using imlib should get a list of libraries to link with by
+# executing `imlib-config --libs`. All libraries listed below are returned by
+# this call, so they are required by every program compiled with imlib.
+Requires:	libjpeg-devel
+Requires:	libtiff-devel
+Requires:	libungif-devel
+Requires:	libpng-devel
+Requires:	zlib-devel
+Requires	XFree86-devel
 
 %description devel
 Header files and development documentation for Imlib.
