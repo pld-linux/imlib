@@ -1,0 +1,11 @@
+--- imlib-1.9.14/configure.in.orig	Fri May 16 09:47:10 2003
++++ imlib-1.9.14/configure.in	Fri May 16 09:51:23 2003
+@@ -13,7 +13,7 @@
+ dnl Initialize maintainer mode
+ AM_MAINTAINER_MODE
+ 
+-ALL_LINGUAS="bg ca da de eo es fi fr gl hr hu id it lt nl no pl pt ro sk sv tr uk wa zh_CN.GB2312"
++ALL_LINGUAS="bg ca da de eo es fi fr gl hr hu id it lt nl no pl pt ro sk sv tr uk wa zh_CN"
+ AM_GNU_GETTEXT
+ 
+ dnl Give the user an option to compile without shared memory support,
