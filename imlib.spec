@@ -11,6 +11,7 @@ Epoch:		1
 License:	LGPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/imlib/1.9/%{name}-%{version}.tar.bz2
+# Source0-md5:	a337643f75bb431034d7213ac74f13dc
 Source1:	%{name}-config.desktop
 Patch0:		%{name}-m4_fix.patch
 Patch1:		%{name}-full_i18n.patch
