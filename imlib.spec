@@ -1,13 +1,12 @@
 Summary:	Image loading and rendering library for X11R6
 Summary(pl):	Biblioteki do renderowania i ³adowania grafiki pod X11R6
 Name:		imlib 
-Version:	1.9.5
+Version:	1.9.7
 Release:	1
 Copyright:	LGPL
 Group:		X11/Libraries
 Group(pl):	X11/Biblioteki
 Source:		ftp://ftp.gnome.org/pub/GNOME/source/imlib/%{name}/%{name}-%{version}.tar.gz
-Patch:		imlib-16bppgrabfix.patch
 URL:		http://www.labs.redhat.com/imlib/
 BuildRequires:	glib-devel 
 BuildRequires:	gtk+-devel 
@@ -75,7 +74,6 @@ Biblioteki statyczne imlib.
 
 %prep
 %setup -q
-%patch -p1
 
 %build
 LDFLAGS="-s"; export LDFLAGS
@@ -97,7 +95,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so.*
+%attr(755,root,root) %{_libdir}/lib*.so.*.*
 %config /etc/X11/*
 
 %files cfgeditor
