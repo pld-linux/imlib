@@ -66,7 +66,7 @@ Summary(ko):	Imlib¶óÀÌºê·¯¸®¿ë ¼³Á¤ ÆíÁý±â
 Summary(pl):	Edytor konfiguracji do biblioteki imlib
 Summary(pt_BR):	Editor da configuração da imlib
 Group:		X11/Applications
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{epoch}:%{version}
 
 %description cfgeditor
 The imlib_config program allows you to control the way imlib uses
@@ -92,7 +92,7 @@ Summary(ko):	Imlib ÀÀ¿ëÇÁ·Î±×·¥µéÀ» À§ÇÑ °³¹ß µµ±¸
 Summary(pl):	Pliki nag³ówkowe oraz dokumentacja do imlib
 Summary(pt_BR):	Arquivos de inclusão, bibliotecas e documentação para a Imlib
 Group:		X11/Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{epoch}:%{version}
 # Every program using imlib should get a list of libraries to link with by
 # executing `imlib-config --libs`. All libraries listed below are returned by
 # this call, so they are required by every program compiled with imlib.
@@ -126,7 +126,7 @@ Summary:	Imlib static libraries
 Summary(pl):	Biblioteki statyczne imlib
 Summary(pt_BR):	Bibliotecas estáticas para desenvolvimento com imlib
 Group:		X11/Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{epoch}:%{version}
 
 %description static
 Imlib static libraries.
