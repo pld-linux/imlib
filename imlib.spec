@@ -144,7 +144,7 @@ Bibliotecas estáticas para desenvolvimento com imlib.
 
 %build
 rm -rf missing
-gettextize --copy --force
+%{__gettextize}
 aclocal
 %{__autoconf}
 %{__automake}
