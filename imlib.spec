@@ -1,13 +1,13 @@
 Summary:     Image loading and rendering library for X11R6
 Summary(pl): Biblioteki do renderowania i ³adowania plików graficznych pod X'y
 Name:        imlib 
-Version:     1.7
-Release:     2
+Version:     1.8.1
+Release:     1
 Copyright:   LGPL
 Group:       X11/Libraries
 Source:      ftp://ftp.labs.redhat.com/pub/imlib/TAR/%{name}-%{version}.tar.gz
 Requires:    libpng, libtiff, libjpeg, zlib, libgr-progs, glib, gtk+, libungif
-Requires:    libungif, ImageMagick 
+Requires:    libungif, ImageMagick
 URL:         http://www.labs.redhat.com/imlib/
 Obsoletes:   Imlib
 BuildRoot:   /tmp/%{name}-%{version}-root
@@ -47,29 +47,24 @@ Biblioteki statyczne imlib.
 
 %prep
 %setup -q
-%setup -q -n imlib
+
 %build
 CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
-# Optimize that damned code all the way
-if [ ! -z "echo -n $RPM_OPT_FLAGS | grep pentium" ]; then
-  if [ ! -z which egcs ]; then
-    CC="egcs"
-  else
-    if [ ! -z which pgcc ]; then
-      CC="pgcc"
-    fi
-  fi
-fi
-
-CFLAGS="$RPM_OPT_FLAGS" ./configure --prefix=/usr
+CFLAGS="$RPM_OPT_FLAGS" ./configure \
+	--sysconfdir=/etc \
+	--datadir=/usr/share
+make
 			    
 %install
 rm -rf $RPM_BUILD_ROOT
 
 make install DESTDIR=$RPM_BUILD_ROOT
-make prefix=$RPM_BUILD_ROOT/usr install
+make install \
+	prefix=$RPM_BUILD_ROOT/usr/X11R6 \
+	sysconfdir=$RPM_BUILD_ROOT/etc \
+	datadir=$RPM_BUILD_ROOT/usr/share
 strip $RPM_BUILD_ROOT/usr/X11R6/lib/lib*.so.*.*
-strip $RPM_BUILD_ROOT/usr/{bin/imlib_config,lib/lib*.so.*.*}
+strip $RPM_BUILD_ROOT/usr/X11R6/{bin/imlib_config,lib/lib*.so.*.*}
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -78,21 +73,28 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %attr(755, root, root) /usr/X11R6/lib/lib*.so.*.*
-%attr(755, root, root) /usr/lib/lib*.so.*.*
-%attr(644, root, root) /usr/etc/*
-%attr(755, root, root) /usr/bin/imlib_config
+%attr(644, root, root) %config /etc/*
+%attr(755, root, root) /usr/X11R6/bin/imlib_config
+
 %files devel
 %defattr(644, root, root, 755)
 %doc README doc
-%doc README HACKING doc
-/usr/lib/lib*.so
-/usr/include/*
-%attr(755, root, root) /usr/bin/imlib-config
+%attr(755, root, root) /usr/X11R6/lib/lib*.so
+/usr/X11R6/lib/lib*.so
+/usr/share/aclocal/*
+%attr(755, root, root) /usr/X11R6/bin/imlib-config
+
 %files static
 %attr(644, root, root) /usr/X11R6/lib/*a
-%attr(644, root, root) /usr/lib/*a
+
 %changelog
 * Sun Jan 31 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [1.8.1-1]
+- added missing /usr/share/aclocal/* files to devel,
+- files from /usr/etc moved to /etc and marked as %config,
+- changed prefix to /usr/X11R6.
+
+* Sun Sep  6 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.7-2]
 - added -q %setup parameter,
 - changed Buildroot to /tmp/%%{name}-%%{version}-root,
