@@ -85,7 +85,7 @@ make
 rm -rf $RPM_BUILD_ROOT
 make install DESTDIR=$RPM_BUILD_ROOT
 
-strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*.so.*
+strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*.so{,.*.*}
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -95,7 +95,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%attr(755,root,root) %{_libdir}/libImlib.so.*.*
+%attr(755,root,root) %{_libdir}/libgdk_imlib.so.*.*
+%attr(755,root,root) %{_libdir}/libimlib-*.so
+%attr(755,root,root) %{_libdir}/libimlib-*.la
 %config /etc/X11/*
 
 %files cfgeditor
@@ -107,7 +110,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc doc/{*gif,*.html}
 
-%attr(755,root,root) %{_libdir}/lib*.so
+%attr(755,root,root) %{_libdir}/libImlib.so
+%attr(755,root,root) %{_libdir}/libgdk_imlib.so
+%attr(755,root,root) %{_libdir}/libImlib.la
+%attr(755,root,root) %{_libdir}/libgdk_imlib.la
 
 %attr(755,root,root) %{_bindir}/imlib-config
 
