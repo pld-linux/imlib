@@ -6,7 +6,7 @@ Summary(pl):	Biblioteki do renderowania i ³adowania grafiki pod X11R6
 Summary(pt_BR):	Biblioteca de carga e renderização para X11R6
 Name:		imlib
 Version:	1.9.14
-Release:	7
+Release:	8
 Epoch:		1
 License:	LGPL
 Group:		X11/Libraries
@@ -163,13 +163,13 @@ rm -rf missing
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_applnkdir}/Settings
+install -d $RPM_BUILD_ROOT%{_desktopdir}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	m4datadir=%{_aclocaldir}
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Settings
+install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 
 # no static modules and *.la for modules - shut up check-files
 rm -f $RPM_BUILD_ROOT%{_libdir}/libimlib-*.{la,a}
@@ -191,7 +191,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files cfgeditor -f %{name}.lang
 %defattr(644,root,root,755)
-%{_applnkdir}/Settings/imlib-config.desktop
+%{_desktopdir}/imlib-config.desktop
 %attr(755,root,root) %{_bindir}/imlib_config
 %{_mandir}/man1/imlib_config.1*
 
