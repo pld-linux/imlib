@@ -2,17 +2,16 @@ Summary:	Image loading and rendering library for X11R6
 Summary(pl):	Biblioteki do renderowania i ³adowania plików graficznych pod X'y
 Name:		imlib 
 Version:	1.9.4
-Release:	2
+Release:	3
 Copyright:	LGPL
 Group:		X11/Libraries
 Group(pl):	X11/Biblioteki
 Source:		ftp://ftp.gnome.org/pub/GNOME/source/%{name}/%{name}-%{version}.tar.gz
 URL:		http://www.labs.redhat.com/imlib/
-Requires:	gtk+ = 1.2.1
-Requires:	glib = 1.2.1
+BuildPrereq:	gtk+ >= 1.1.9
+BuildPrereq:	XFree86-devel
 BuildRoot:	/tmp/%{name}-%{version}-root
 Obsoletes:	Imlib
-Conflicts:      glibc <= 2.0.7
 
 %description
 Imlib is an advanced replacement library for libraries like libXpm that
@@ -97,6 +96,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(644,root,root) %config /etc/X11/GNOME/*
 
 %files cfgeditor
+%defattr(644,root,root,755)
 %attr(755,root,root) /usr/X11R6/bin/imlib_config
 
 %files devel
@@ -110,9 +110,18 @@ rm -rf $RPM_BUILD_ROOT
 /usr/share/aclocal/*
 
 %files static
-%attr(644,root,root) /usr/X11R6/lib/lib*.a
+%defattr(644,root,root,755)
+/usr/X11R6/lib/lib*.a
 
 %changelog
+* Thu Apr 22 1999 Piotr Czerwiñski <pius@pld.org.pl>
+  [1.9.4-3]
+- removed "Conflicts: glibc <= 2.0.7" (not neccessary now),
+- removed old %requires_pkg_ver macros,
+- added "BuildPrereq: XFree86-devel",
+- minor changes,
+- recompiles on rpm 3.
+
 * Thu Mar 25 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.9.4-2]
 - updated Requires to glib = 1.2.1, gtk = 1.2.1.
