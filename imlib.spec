@@ -171,7 +171,7 @@ rm -rf $RPM_BUILD_ROOT
 - added full %attr description in %files,
 - added stripping shared libraries and binarires,
 - fixed passing $RPM_OPT_FLAGS,
-- /usr/bin/imlib-config moved to devel,
+- %{_bindir}/imlib-config moved to devel,
 - added pl translation (Wojtek ¦lusarczyk <wojtek@shadow.eu.org>).
 
 * Fri Apr 3 1998 Michael K. Johnson <johnsonm@redhat.com>
