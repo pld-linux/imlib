@@ -1,7 +1,7 @@
 Summary:	Image loading and rendering library for X11R6
 Summary(fr):	Librairie de chargement et interprétation d'images pour X11R6
 Summary(pl):	Biblioteki do renderowania i ³adowania grafiki pod X11R6
-Name:		imlib 
+Name:		imlib
 Version:	1.9.8
 Release:	2
 License:	LGPL
