@@ -16,6 +16,7 @@ Patch0:		%{name}-m4_fix.patch
 Patch1:		%{name}-full_i18n.patch
 Patch2:		%{name}-config.patch
 Patch3:		%{name}-ac25x.patch
+Patch4:		%{name}-locale-zh.patch
 Patch14:	%{name}-intl.patch
 URL:		http://www.labs.redhat.com/imlib/
 BuildRequires:	autoconf
@@ -141,8 +142,12 @@ Bibliotecas estáticas para desenvolvimento com imlib.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 # temporary hack
 %patch14 -p1
+
+# standardize name
+mv -f po/{zh_CN.GB2312.po,zh_CN.po}
 
 %build
 rm -rf missing
@@ -164,6 +169,9 @@ install -d $RPM_BUILD_ROOT%{_applnkdir}/Settings
 	m4datadir=%{_aclocaldir}
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Settings
+
+# no static modules and *.la for modules - shut up check-files
+rm -f $RPM_BUILD_ROOT%{_libdir}/libimlib-*.{la,a}
 
 %find_lang %{name}
 
@@ -201,4 +209,5 @@ rm -rf $RPM_BUILD_ROOT
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libImlib.a
+%{_libdir}/libgdk_imlib.a
