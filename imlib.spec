@@ -7,7 +7,7 @@ Release:	2
 Copyright:	LGPL
 Group:		X11/Libraries
 Group(pl):	X11/Biblioteki
-Source0:	ftp://ftp.gnome.org/pub/GNOME/source/imlib/%{name}/%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.gnome.org/pub/GNOME/stable/sources/imlib/%{name}-%{version}.tar.gz
 Source1:	imlib-config.desktop
 URL:		http://www.labs.redhat.com/imlib/
 BuildRequires:	glib-devel 
