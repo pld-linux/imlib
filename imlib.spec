@@ -14,6 +14,8 @@ BuildRequires:	XFree86-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libtiff-devel
 BuildRequires:	libpng-devel
+BuildRequires:	libungif-devel
+BuildRequires:	zlib-devel
 BuildRoot:	/tmp/%{name}-%{version}-root
 
 %define		_prefix		/usr/X11R6
