@@ -4,7 +4,7 @@ Summary(pl):	Biblioteki do renderowania i ³adowania grafiki pod X11R6
 Name:		imlib 
 Version:	1.9.8
 Release:	2
-Copyright:	LGPL
+License:	LGPL
 Group:		X11/Libraries
 Group(pl):	X11/Biblioteki
 Source0:	ftp://ftp.gnome.org/pub/GNOME/stable/sources/imlib/%{name}-%{version}.tar.gz
@@ -27,8 +27,7 @@ BuildRoot:	/tmp/%{name}-%{version}-root
 
 %description
 Imlib is an advanced replacement library for libraries like libXpm that
-provides many more features with much greater flexability and
-speed.
+provides many more features with much greater flexability and speed.
 
 %description -l fr
 Imlib est une librairie de remplacement avancée pour les librairies comme
@@ -46,15 +45,13 @@ Group(pl):	X11/Narzêdzia
 Requires:	%{name} = %{version}
 
 %description cfgeditor
-The imlib_config program allows you to control the way imlib uses
-color and handles gamma correction/etc.
+The imlib_config program allows you to control the way imlib uses color and
+handles gamma correction/etc.
 
 %description -l pl cfgeditor
 Program imlib_config umo¿liwia zmianê sposobu u¿ywania przez bibliotekê
-imlib kolorów, korekcji gamma i innych.
-
-The imlib_config program allows you to control the way imlib uses
-color and handles gamma correction/etc.
+imlib kolorów, korekcji gamma i innych.  The imlib_config program allows
+you to control the way imlib uses color and handles gamma correction/etc.
 
 %package devel
 Summary:	Imlib header files and development documentation
@@ -117,7 +114,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libgdk_imlib.so.*.*
 %attr(755,root,root) %{_libdir}/libimlib-*.so
 %attr(755,root,root) %{_libdir}/libimlib-*.la
-%config /etc/X11/*
+%config %{_sysconfdir}/*
 
 %files cfgeditor
 %defattr(644,root,root,755)
