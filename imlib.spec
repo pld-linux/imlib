@@ -67,7 +67,7 @@ Requires:	%{name} = %{version}
 %description devel
 Header files and development documentation for Imlib.
 
-%description l fr devel
+%description devel -l fr
 Fichiers entête pour Imlib.
 
 %description devel -l pl
