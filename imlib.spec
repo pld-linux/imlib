@@ -24,6 +24,7 @@ BuildRequires:	gettext-devel
 BuildRequires:	gtk+-devel
 BuildRequires:	libjpeg-devel >= 6b-18
 BuildRequires:	libtiff-devel
+BuildRequires:	libtool
 BuildRequires:	libpng >= 1.0.8
 BuildRequires:	libungif-devel
 BuildRequires:	zlib-devel
@@ -150,6 +151,7 @@ Bibliotecas estáticas para desenvolvimento com imlib.
 %build
 rm -rf missing
 %{__gettextize}
+%{__libtoolize}
 %{__aclocal}
 %{__autoconf}
 %{__automake}
