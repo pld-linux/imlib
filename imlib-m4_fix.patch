@@ -1,0 +1,20 @@
+--- imlib-1.9.8.1/imlib.m4	Mon Jul 20 15:00:09 2000
++++ imlib-1.9.8.1.new/imlib.m4	Mon Jul 20 15:00:18 2000
+@@ -31,7 +31,7 @@
+   fi
+ 
+   AC_PATH_PROG(IMLIB_CONFIG, imlib-config, no)
+-  min_imlib_version=ifelse([$1], ,1.8.2,$1)
++  min_imlib_version=ifelse([$1], ,1.9.5,$1)
+   AC_MSG_CHECKING(for IMLIB - version >= $min_imlib_version)
+   no_imlib=""
+   if test "$IMLIB_CONFIG" = "no" ; then
+@@ -189,7 +189,7 @@
+   fi
+ 
+   AC_PATH_PROG(IMLIB_CONFIG, imlib-config, no)
+-  min_imlib_version=ifelse([$1], ,1.8.2,$1)
++  min_imlib_version=ifelse([$1], ,1.9.5,$1)
+   AC_MSG_CHECKING(for IMLIB - version >= $min_imlib_version)
+   no_imlib=""
+   if test "$IMLIB_CONFIG" = "no" ; then
