@@ -3,7 +3,7 @@ Summary(fr):	Librairie de chargement et interprétation d'images pour X11R6
 Summary(pl):	Biblioteki do renderowania i ³adowania grafiki pod X11R6
 Name:		imlib
 Version:	1.9.8.1
-Release:	6
+Release:	7
 Epoch:		1
 License:	LGPL
 Group:		X11/Libraries
@@ -119,13 +119,13 @@ automake
 			    
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_applnkdir}/Settings
+install -d $RPM_BUILD_ROOT%{_applnkdir}/Settings/GNOME
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	m4datadir=%{_aclocaldir}
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Settings
+install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Settings/GNOME
 
 %find_lang %{name}
 
@@ -145,7 +145,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files cfgeditor -f %{name}.lang
 %defattr(644,root,root,755)
-%{_applnkdir}/Settings/imlib-config.desktop
+%{_applnkdir}/Settings/GNOME/imlib-config.desktop
 %attr(755,root,root) %{_bindir}/imlib_config
 
 %files devel
