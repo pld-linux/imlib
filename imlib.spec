@@ -7,13 +7,6 @@ Release:	3
 Epoch:		1
 License:	LGPL
 Group:		X11/Libraries
-Group(de):	X11/Libraries
-Group(es):	X11/Bibliotecas
-Group(fr):	X11/Librairies
-Group(pl):	X11/Biblioteki
-Group(pt_BR):	X11/Bibliotecas
-Group(ru):	X11/Библиотеки
-Group(uk):	X11/Б╕бл╕отеки
 Source0:	ftp://ftp.gnome.org/pub/GNOME/stable/sources/imlib/%{name}-%{version}.tar.gz
 Source1:	%{name}-config.desktop
 Patch0:		%{name}-m4_fix.patch
@@ -53,11 +46,6 @@ zwiЙkszon╠ elastyczno╤ci╠ oraz prЙdko╤ci╠.
 Summary:	Imlib configuration editor
 Summary(pl):	Edytor konfiguracji do biblioteki imlib
 Group:		X11/Applications
-Group(de):	X11/Applikationen
-Group(es):	X11/Aplicaciones
-Group(pl):	X11/Aplikacje
-Group(pt_BR):	X11/AplicaГУes
-Group(pt):	X11/AplicaГУes
 Requires:	%{name} = %{version}
 
 %description cfgeditor
@@ -73,13 +61,6 @@ Summary:	Imlib header files and development documentation
 Summary(fr):	Fichiers entЙte pour Imlib
 Summary(pl):	Pliki nagЁСwkowe oraz dokumentacja do imlib
 Group:		X11/Development/Libraries
-Group(de):	X11/Entwicklung/Libraries
-Group(es):	X11/Desarrollo/Bibliotecas
-Group(fr):	X11/Development/Librairies
-Group(pl):	X11/Programowanie/Biblioteki
-Group(pt_BR):	X11/Desenvolvimento/Bibliotecas
-Group(ru):	X11/Разработка/Библиотеки
-Group(uk):	X11/Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 # Every program using imlib should get a list of libraries to link with by
 # executing `imlib-config --libs`. All libraries listed below are returned by
@@ -104,13 +85,6 @@ Pliki nagЁСwkowe oraz dokumentacja do biblioteki Imlib.
 Summary:	Imlib static libraries
 Summary(pl):	Biblioteki statyczne imlib
 Group:		X11/Development/Libraries
-Group(de):	X11/Entwicklung/Libraries
-Group(es):	X11/Desarrollo/Bibliotecas
-Group(fr):	X11/Development/Librairies
-Group(pl):	X11/Programowanie/Biblioteki
-Group(pt_BR):	X11/Desenvolvimento/Bibliotecas
-Group(ru):	X11/Разработка/Библиотеки
-Group(uk):	X11/Розробка/Б╕бл╕отеки
 Requires:	%{name}-devel = %{version}
 
 %description static
