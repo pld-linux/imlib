@@ -3,13 +3,13 @@ Summary(fr):	Librairie de chargement et interprétation d'images pour X11R6
 Summary(pl):	Biblioteki do renderowania i ³adowania grafiki pod X11R6
 Name:		imlib
 Version:	1.9.8.1
-Release: 3
+Release:	3
 License:	LGPL
 Group:		X11/Libraries
 Group(pl):	X11/Biblioteki
 Source0:	ftp://ftp.gnome.org/pub/GNOME/stable/sources/imlib/%{name}-%{version}.tar.gz
-Source1:	imlib-config.desktop
-Patch0:		imlib-gdk.patch
+Source1:	%{name}-config.desktop
+Patch0:		%{name}-gdk.patch
 URL:		http://www.labs.redhat.com/imlib/
 BuildRequires:	gtk+-devel 
 BuildRequires:	libjpeg-devel
