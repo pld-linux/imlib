@@ -25,6 +25,7 @@ BuildRequires:	libungif-devel
 BuildRequires:	zlib-devel
 BuildRequires:	gdk-pixbuf-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+Obsoletes:	libimlib1
 
 %define		_prefix		/usr/X11R6
 %define		_sysconfdir	/etc/X11
@@ -72,6 +73,7 @@ Requires:	libungif-devel
 Requires:	libpng-devel
 Requires:	zlib-devel
 Requires:	XFree86-devel
+Obsoletes:	libimlib1-devel
 
 %description devel
 Header files and development documentation for Imlib.
