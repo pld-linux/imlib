@@ -1,17 +1,25 @@
-Summary:     Image loading and rendering library for X11R6
-Summary(pl): Biblioteki do renderowania i ³adowania plików graficznych pod X'y
-Name:        imlib 
-Version:     1.9.0
-Release:     1
-Copyright:   LGPL
-Group:       X11/Libraries
-Group(pl):   X11/Biblioteki
-Source:      ftp://ftp.gnome.org/pub/GNOME/source/%{name}/%{name}-%{version}.tar.gz
-Requires:    libpng, libtiff, libjpeg, zlib, libgr-progs, glib, gtk+, libungif
-Requires:    gtk+ = 1.1.13, glib = 1.1.13, libungif, ImageMagick
-URL:         http://www.labs.redhat.com/imlib/
-Obsoletes:   Imlib
-BuildRoot:   /tmp/%{name}-%{version}-root
+Summary:	Image loading and rendering library for X11R6
+Summary(pl):	Biblioteki do renderowania i ³adowania plików graficznych pod X'y
+Name:		imlib 
+Version:	1.9.2
+Release:	1d
+Copyright:	LGPL
+Group:		X11/Libraries
+Group(pl):	X11/Biblioteki
+Source:		ftp://ftp.gnome.org/pub/GNOME/source/%{name}/%{name}-%{version}.tar.gz
+URL:		http://www.labs.redhat.com/imlib/
+Requires:	libpng
+Requires:	libtiff
+Requires:	libjpeg
+Requires:	zlib
+Requires:	libgr-progs
+Requires:	libungif
+Requires:	gtk+ = 1.1.14
+Requires:	glib = 1.1.14
+Requires:	ImageMagick
+BuildRoot:	/tmp/%{name}-%{version}-root
+Obsoletes:	Imlib
+
 %description
 Imlib is an advanced replacement library for libraries like libXpm that
 provides many more features with much greater flexability and
@@ -22,12 +30,12 @@ Imlib jest zaawansowanym zamiennikiem bibliotek typu libXpm.
 
 %package devel
 Summary:	Imlib header files and development documentation
-Summary:     Imlib header files and development documentation
-Summary(pl): Pliki nag³ówkowe oraz dokumentacja do imlib
-Group:       X11/Libraries
-Group(pl):   X11/Biblioteki
-Requires:    %{name} = %{version}
-Obsoletes:   Imlib
+Summary(pl):	Pliki nag³ówkowe oraz dokumentacja do imlib
+Group:		X11/Development/Libraries
+Group(pl):	X11/Programowanie/Biblioteki
+Requires:	%{name} = %{version}
+Obsoletes:	Imlib
+
 %description devel
 Header files and development documentation for Imlib.
 
@@ -36,12 +44,12 @@ Pliki nag³ówkowe oraz dokumentacja do biblioteki Imlib.
 
 %package static
 Summary:	Imlib static libraries
-Summary:     Imlib static libraries
-Summary(pl): Biblioteki statyczne imlib
-Group:       X11/Libraries
-Group(pl):   X11/Biblioteki
-Requires:    %{name}-devel = %{version}
-Obsoletes:   Imlib
+Summary(pl):	Biblioteki statyczne imlib
+Group:		X11/Development/Libraries
+Group(pl):	X11/Programowanie/Biblioteki
+Requires:	%{name}-devel = %{version}
+Obsoletes:	Imlib
+
 %description static
 Imlib static libraries.
 
@@ -90,6 +98,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %changelog
 * Sun Jan 31 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [1.9.2-1d]
+- changed Group in devel and static subpackages,
+- updated "Requires: gtk+ = 1.1.14, glib = 1.1.14".
+
+* Tue Jan 19 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.9.0-1]
 - added Group(pl),
 - added "Requires: gtk+ = 1.1.13, glib = 1.1.13",
