@@ -1,21 +1,20 @@
 Summary:	Image loading and rendering library for X11R6
-Summary(pl):	Biblioteki do renderowania i ³adowania plików graficznych pod X'y
+Summary(pl):	Biblioteki do renderowania i ³adowania grafiki pod X11R6
 Name:		imlib 
 Version:	1.9.4
-Release:	3
+Release:	4
 Copyright:	LGPL
 Group:		X11/Libraries
 Group(pl):	X11/Biblioteki
 Source:		ftp://ftp.gnome.org/pub/GNOME/source/%{name}/%{name}-%{version}.tar.gz
 URL:		http://www.labs.redhat.com/imlib/
-BuildPrereq:	glib-devel >= 1.1.9
-BuildPrereq:	gtk+-devel >= 1.1.9
+BuildPrereq:	glib-devel 
+BuildPrereq:	gtk+-devel 
 BuildPrereq:	XFree86-devel
 BuildPrereq:	libjpeg-devel
 BuildPrereq:	libtiff-devel
 BuildPrereq:	libpng-devel
 BuildRoot:	/tmp/%{name}-%{version}-root
-Obsoletes:	Imlib
 
 %define _prefix  /usr/X11R6
 %define _datadir /usr/share
@@ -28,7 +27,7 @@ speed.
 %description -l pl
 Imlib jest zaawansowanym zamiennikiem bibliotek typu libXpm.
 
-%package cfgeditor
+%package	cfgeditor
 Summary:	Imlib configuration editor
 Summary(pl):	Edytor konfiguracji do biblioteki imlib
 Group:		X11/Utilities
@@ -46,13 +45,12 @@ imlib kolorów, korekcji gamma i innych.
 The imlib_config program allows you to control the way imlib uses
 color and handles gamma correction/etc.
 
-%package devel
+%package	devel
 Summary:	Imlib header files and development documentation
 Summary(pl):	Pliki nag³ówkowe oraz dokumentacja do imlib
 Group:		X11/Development/Libraries
 Group(pl):	X11/Programowanie/Biblioteki
 Requires:	%{name} = %{version}
-Obsoletes:	Imlib
 
 %description devel
 Header files and development documentation for Imlib.
@@ -60,13 +58,12 @@ Header files and development documentation for Imlib.
 %description devel -l pl
 Pliki nag³ówkowe oraz dokumentacja do biblioteki Imlib.
 
-%package static
+%package	static
 Summary:	Imlib static libraries
 Summary(pl):	Biblioteki statyczne imlib
 Group:		X11/Development/Libraries
 Group(pl):	X11/Programowanie/Biblioteki
 Requires:	%{name}-devel = %{version}
-Obsoletes:	Imlib
 
 %description static
 Imlib static libraries.
@@ -81,7 +78,7 @@ Biblioteki statyczne imlib.
 CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
 ./configure %{_target_platform} \
 	--prefix=%{_prefix} \
-	--sysconfdir=/etc/X11/GNOME \
+	--sysconfdir=/etc/X11/imlib \
 	--datadir=%{_datadir}
 make
 			    
@@ -90,7 +87,7 @@ rm -rf $RPM_BUILD_ROOT
 
 make install DESTDIR=$RPM_BUILD_ROOT
 
-strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*.so.*.*
+strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*.so.*
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -99,16 +96,19 @@ rm -rf $RPM_BUILD_ROOT
 %postun -p /sbin/ldconfig
 
 %files
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
-%attr(644,root,root) %config /etc/X11/GNOME/*
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/lib*.so.*
+%config /etc/X11/imlib/*
 
 %files cfgeditor
 %defattr(644,root,root,755)
+
 %attr(755,root,root) %{_bindir}/imlib_config
 
 %files devel
 %defattr(644,root,root,755)
 %doc doc/{*gif,*.html}
+
 %attr(755,root,root) %{_libdir}/lib*.so
 
 %attr(755,root,root) %{_bindir}/imlib-config
@@ -118,6 +118,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files static
 %defattr(644,root,root,755)
+
 %{_libdir}/lib*.a
 
 %changelog
