@@ -5,35 +5,32 @@ Summary(ko):	X11R6¸¦ À§ÇÑ ±×¸² ÀÐ±â/È­¸é¿¡ ±×·ÁÁÖ±â ¶óÀÌºê·¯¸®
 Summary(pl):	Biblioteki do renderowania i ³adowania grafiki pod X11R6
 Summary(pt_BR):	Biblioteca de carga e renderização para X11R6
 Name:		imlib
-Version:	1.9.14
-Release:	13
+Version:	1.9.15
+Release:	1
 Epoch:		1
 License:	LGPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/imlib/1.9/%{name}-%{version}.tar.bz2
-# Source0-md5:	a337643f75bb431034d7213ac74f13dc
+# Source0-md5:	7db987e6c52e4daf70d7d0f471238eae
 Source1:	%{name}-config.desktop
 Patch0:		%{name}-m4_fix.patch
 Patch1:		%{name}-full_i18n.patch
 Patch2:		%{name}-config.patch
-Patch3:		%{name}-ac25x.patch
-Patch4:		%{name}-locale-names.patch
-Patch5:		%{name}-am18.patch
-Patch6:		%{name}-1.9.14-suse-alt-bound.patch
-Patch14:	%{name}-intl.patch
+Patch3:		%{name}-am18.patch
+Patch4:		%{name}-intl.patch
 URL:		http://www.labs.redhat.com/imlib/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
-BuildRequires:	gtk+-devel
+BuildRequires:	gtk+-devel >= 1.2.1
 BuildRequires:	libjpeg-devel >= 6b-18
-BuildRequires:	libtiff-devel
 BuildRequires:	libpng-devel >= 1.0.8
+BuildRequires:	libtiff-devel
 BuildRequires:	libtool
 BuildRequires:	libungif-devel
 BuildRequires:	zlib-devel
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libimlib1
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_sysconfdir	/etc/X11
 
@@ -94,16 +91,13 @@ Summary(ko):	Imlib ÀÀ¿ëÇÁ·Î±×·¥µéÀ» À§ÇÑ °³¹ß µµ±¸
 Summary(pl):	Pliki nag³ówkowe oraz dokumentacja do imlib
 Summary(pt_BR):	Arquivos de inclusão, bibliotecas e documentação para a Imlib
 Group:		X11/Development/Libraries
-Requires:	%{name} = %{epoch}:%{version}
-# Every program using imlib should get a list of libraries to link with by
-# executing `imlib-config --libs`. All libraries listed below are returned by
-# this call, so they are required by every program compiled with imlib.
+Requires:	%{name} = %{epoch}:%{version}-%{release}
+Requires:	XFree86-devel
 Requires:	libjpeg-devel
+Requires:	libpng-devel
 Requires:	libtiff-devel
 Requires:	libungif-devel
-Requires:	libpng-devel
 Requires:	zlib-devel
-Requires:	XFree86-devel
 Obsoletes:	libimlib1-devel
 
 %description devel
@@ -128,7 +122,7 @@ Summary:	Imlib static libraries
 Summary(pl):	Biblioteki statyczne imlib
 Summary(pt_BR):	Bibliotecas estáticas para desenvolvimento com imlib
 Group:		X11/Development/Libraries
-Requires:	%{name}-devel = %{epoch}:%{version}
+Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
 %description static
 Imlib static libraries.
@@ -145,21 +139,15 @@ Bibliotecas estáticas para desenvolvimento com imlib.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
 # temporary hack
-%patch14 -p1
-
-# locale names change
-mv -f po/zh_CN{.GB2312,}.po
-mv -f po/{no,nb}.po
+%patch4 -p1
 
 %build
 %{__gettextize}
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
+%{__autoheader}
 %{__automake}
 %configure
 %{__make}
@@ -190,13 +178,14 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libImlib.so.*.*
 %attr(755,root,root) %{_libdir}/libgdk_imlib.so.*.*
 %attr(755,root,root) %{_libdir}/libimlib-*.so
-%config %{_sysconfdir}/*
+%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/im_palette*.pal
+%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/imrc
 
 %files cfgeditor -f %{name}.lang
 %defattr(644,root,root,755)
-%{_desktopdir}/imlib-config.desktop
 %attr(755,root,root) %{_bindir}/imlib_config
 %{_mandir}/man1/imlib_config.1*
+%{_desktopdir}/imlib-config.desktop
 
 %files devel
 %defattr(644,root,root,755)
