@@ -1,5 +1,3 @@
-# TODO:
-# - SECURITY: http://securitytracker.com/alerts/2004/Aug/1011104.html
 Summary:	Image loading and rendering library for X11R6
 Summary(es):	Biblioteca de carga y render 3D para X11R6
 Summary(fr):	Librairie de chargement et interprétation d'images pour X11R6
@@ -8,7 +6,7 @@ Summary(pl):	Biblioteki do renderowania i ³adowania grafiki pod X11R6
 Summary(pt_BR):	Biblioteca de carga e renderização para X11R6
 Name:		imlib
 Version:	1.9.14
-Release:	11
+Release:	12.1
 Epoch:		1
 License:	LGPL
 Group:		X11/Libraries
@@ -21,6 +19,7 @@ Patch2:		%{name}-config.patch
 Patch3:		%{name}-ac25x.patch
 Patch4:		%{name}-locale-names.patch
 Patch5:		%{name}-am18.patch
+Patch6:		%{name}-1.9.14-suse-alt-bound.patch
 Patch14:	%{name}-intl.patch
 URL:		http://www.labs.redhat.com/imlib/
 BuildRequires:	autoconf
@@ -37,6 +36,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libimlib1
 
 %define		_sysconfdir	/etc/X11
+%define		_desktopdir	%{_applnkdir}/Settings
 
 %description
 Imlib is an advanced replacement library for libraries like libXpm
@@ -148,8 +148,9 @@ Bibliotecas estáticas para desenvolvimento com imlib.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 # temporary hack
-%patch14 -p1
+#%patch14 -p1
 
 # locale names change
 mv -f po/zh_CN{.GB2312,}.po
