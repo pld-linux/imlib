@@ -15,8 +15,8 @@ Requires:	libjpeg
 Requires:	zlib
 Requires:	libgr-progs
 Requires:	libungif
-Requires:	gtk+ = 1.1.16
-Requires:	glib = 1.1.16
+Requires:	gtk+ = 1.2.0
+Requires:	glib = 1.2.0
 Requires:	ImageMagick
 BuildRoot:	/tmp/%{name}-%{version}-root
 Obsoletes:	Imlib
@@ -124,6 +124,7 @@ rm -rf $RPM_BUILD_ROOT
 %changelog
 * Wed Feb 24 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.9.3-1]
+- updated Requires to glib = 1.2.0, gtk = 1.2.0,
 - added "Conflicts: glibc <= 2.0.7" for preven installing with proper
   version glibc,
 - added cfgeditor subpackage,
