@@ -1,12 +1,13 @@
 Summary:	Image loading and rendering library for X11R6
 Summary(pl):	Biblioteki do renderowania i ³adowania plików graficznych pod X'y
 Name:		imlib 
-Version:	1.9.2
-Release:	1d
+Version:	1.9.3
+Release:	2
 Copyright:	LGPL
 Group:		X11/Libraries
 Group(pl):	X11/Biblioteki
 Source:		ftp://ftp.gnome.org/pub/GNOME/source/%{name}/%{name}-%{version}.tar.gz
+Patch:		imlib-ltconfig.patch
 URL:		http://www.labs.redhat.com/imlib/
 Requires:	libpng
 Requires:	libtiff
@@ -14,8 +15,8 @@ Requires:	libjpeg
 Requires:	zlib
 Requires:	libgr-progs
 Requires:	libungif
-Requires:	gtk+ = 1.1.14
-Requires:	glib = 1.1.14
+Requires:	gtk+ = 1.1.16
+Requires:	glib = 1.1.16
 Requires:	ImageMagick
 BuildRoot:	/tmp/%{name}-%{version}-root
 Obsoletes:	Imlib
@@ -27,6 +28,24 @@ speed.
 
 %description -l pl
 Imlib jest zaawansowanym zamiennikiem bibliotek typu libXpm.
+
+%package cfgeditor
+Summary:	Imlib configuration editor
+Summary(pl):	Edytor konfiguracji do biblioteki imlib
+Group:		X11/Utilities
+Group(pl):	X11/Narzêdzia
+Requires:	%{name} = %{version}
+
+%description cfgeditor
+The imlib_config program allows you to control the way imlib uses
+color and handles gamma correction/etc.
+
+%description -l pl cfgeditor
+Program imlib_config umo¿liwia zmianê sposobu u¿ywania przez bibliotekê
+imlib kolorów, korekcji gamma i innych.
+
+The imlib_config program allows you to control the way imlib uses
+color and handles gamma correction/etc.
 
 %package devel
 Summary:	Imlib header files and development documentation
@@ -63,7 +82,7 @@ Biblioteki statyczne imlib.
 CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
 ./configure \
 	--prefix=/usr/X11R6 \
-	--sysconfdir=/etc \
+	--sysconfdir=/etc/X11/GNOME \
 	--datadir=/usr/share
 make
 			    
@@ -81,22 +100,33 @@ rm -rf $RPM_BUILD_ROOT
 %postun -p /sbin/ldconfig
 
 %files
-%attr(755, root, root) /usr/X11R6/lib/lib*.so.*.*
-%attr(644, root, root) %config /etc/*
-%attr(755, root, root) /usr/X11R6/bin/imlib_config
+%attr(755,root,root) /usr/X11R6/lib/lib*.so.*.*
+%attr(644,root,root) %config /etc/X11/GNOME/*
+
+%files cfgeditor
+%attr(755,root,root) /usr/X11R6/bin/imlib_config
 
 %files devel
-%defattr(644, root, root, 755)
-%doc README doc
-%attr(755, root, root) /usr/X11R6/lib/lib*.so
-%attr(755, root, root) /usr/X11R6/bin/imlib-config
+%defattr(644,root,root,755)
+%doc doc/{*gif,*.html}
+%attr(755,root,root) /usr/X11R6/lib/lib*.so
+
+%attr(755,root,root) /usr/X11R6/bin/imlib-config
+
 /usr/X11R6/include/*
+
 /usr/share/aclocal/*
 
 %files static
-%attr(644, root, root) /usr/X11R6/lib/*a
+%attr(644,root,root) /usr/X11R6/lib/*a
 
 %changelog
+* Wed Feb 24 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [1.9.3-1]
+- added cfgeditor subpackage,
+- updated Requires for gtk+/glib,
+- changed sysconfdir to /etc/X11/GNOME.
+
 * Sun Jan 31 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.9.2-1d]
 - changed Group in devel and static subpackages,
