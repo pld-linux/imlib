@@ -23,6 +23,7 @@ BuildRequires:	libtiff-devel
 BuildRequires:	libpng >= 1.0.8
 BuildRequires:	libungif-devel
 BuildRequires:	zlib-devel
+BuildRequires:	gdk-pixbuf-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
