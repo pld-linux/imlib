@@ -1,0 +1,11 @@
+--- imlib-1.9.11.orig/imlib-config.in	Wed Mar 28 05:18:40 2001
++++ imlib-1.9.11/imlib-config.in	Tue Oct 23 21:35:02 2001
+@@ -59,7 +59,7 @@
+       ;;
+     --libs)
+       libdirs=-L@libdir@
+-      echo $libdirs -lImlib @LDFLAGS@ $gx_libs @X_LIBS@ @X_PRE_LIBS@ -lXext -lX11 @X_EXTRA_LIBS@
++      echo $libdirs -lImlib $gx_libs @X_LIBS@ @X_PRE_LIBS@ -lXext -lX11 @X_EXTRA_LIBS@
+       ;;
+     --libs-gdk)
+       libdirs=-L@libdir@

@@ -3,16 +3,22 @@ Summary(fr):	Librairie de chargement et interprИtation d'images pour X11R6
 Summary(pl):	Biblioteki do renderowania i Ёadowania grafiki pod X11R6
 Name:		imlib
 Version:	1.9.11
-Release:	2
+Release:	3
 Epoch:		1
 License:	LGPL
 Group:		X11/Libraries
 Group(de):	X11/Libraries
+Group(es):	X11/Bibliotecas
+Group(fr):	X11/Librairies
 Group(pl):	X11/Biblioteki
+Group(pt_BR):	X11/Bibliotecas
+Group(ru):	X11/Библиотеки
+Group(uk):	X11/Б╕бл╕отеки
 Source0:	ftp://ftp.gnome.org/pub/GNOME/stable/sources/imlib/%{name}-%{version}.tar.gz
 Source1:	%{name}-config.desktop
 Patch0:		%{name}-m4_fix.patch
 Patch1:		%{name}-full_i18n.patch
+Patch2:		%{name}-config.patch
 URL:		http://www.labs.redhat.com/imlib/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -55,7 +61,7 @@ Requires:	%{name} = %{version}
 The imlib_config program allows you to control the way imlib uses
 color and handles gamma correction/etc.
 
-%description -l pl cfgeditor
+%description cfgeditor -l pl
 Program imlib_config umo©liwia zmianЙ sposobu u©ywania przez
 bibliotekЙ imlib kolorСw, korekcji gamma i innych.
 
@@ -65,7 +71,12 @@ Summary(fr):	Fichiers entЙte pour Imlib
 Summary(pl):	Pliki nagЁСwkowe oraz dokumentacja do imlib
 Group:		X11/Development/Libraries
 Group(de):	X11/Entwicklung/Libraries
+Group(es):	X11/Desarrollo/Bibliotecas
+Group(fr):	X11/Development/Librairies
 Group(pl):	X11/Programowanie/Biblioteki
+Group(pt_BR):	X11/Desenvolvimento/Bibliotecas
+Group(ru):	X11/Разработка/Библиотеки
+Group(uk):	X11/Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 # Every program using imlib should get a list of libraries to link with by
 # executing `imlib-config --libs`. All libraries listed below are returned by
@@ -91,19 +102,25 @@ Summary:	Imlib static libraries
 Summary(pl):	Biblioteki statyczne imlib
 Group:		X11/Development/Libraries
 Group(de):	X11/Entwicklung/Libraries
+Group(es):	X11/Desarrollo/Bibliotecas
+Group(fr):	X11/Development/Librairies
 Group(pl):	X11/Programowanie/Biblioteki
+Group(pt_BR):	X11/Desenvolvimento/Bibliotecas
+Group(ru):	X11/Разработка/Библиотеки
+Group(uk):	X11/Розробка/Б╕бл╕отеки
 Requires:	%{name}-devel = %{version}
 
 %description static
 Imlib static libraries.
 
-%description devel -l pl
+%description static -l pl
 Biblioteki statyczne imlib.
 
 %prep
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 rm -rf missing
@@ -126,11 +143,11 @@ install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Settings
 
 %find_lang %{name}
 
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
-
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post   -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
