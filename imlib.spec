@@ -1,0 +1,114 @@
+Summary:     Image loading and rendering library for X11R6
+Summary(pl): Biblioteki do renderowania i ³adowania plików graficznych pod X'y
+Name:        imlib 
+Version:     1.7
+Release:     2
+Copyright:   LGPL
+Group:       X11/Libraries
+Source:      ftp://ftp.labs.redhat.com/pub/imlib/TAR/%{name}-%{version}.tar.gz
+Requires:    libpng, libtiff, libjpeg, zlib, libgr-progs, glib, gtk+, libungif
+Requires:    libungif, ImageMagick 
+URL:         http://www.labs.redhat.com/imlib/
+Obsoletes:   Imlib
+BuildRoot:   /tmp/%{name}-%{version}-root
+%description
+Imlib is an advanced replacement library for libraries like libXpm that
+provides many more features with much greater flexability and
+speed.
+
+%description -l pl
+Imlib jest zaawansowanym zamiennikiem bibliotek typu libXpm.
+
+%package devel
+Summary:	Imlib header files and development documentation
+Summary:     Imlib header files and development documentation
+Summary(pl): Pliki nag³ówkowe oraz dokumentacja do imlib
+Group:       X11/Libraries
+Requires:    %{name} = %{version}
+Obsoletes:   Imlib
+%description devel
+Header files and development documentation for Imlib.
+
+%description devel -l pl
+Pliki nag³ówkowe oraz dokumentacja do biblioteki Imlib.
+
+%package static
+Summary:	Imlib static libraries
+Summary:     Imlib static libraries
+Summary(pl): Biblioteki statyczne imlib
+Group:       X11/Libraries
+Requires:    %{name}-devel = %{version}
+Obsoletes:   Imlib
+%description static
+Imlib static libraries.
+
+%description devel -l pl
+Biblioteki statyczne imlib.
+
+%prep
+%setup -q
+%setup -q -n imlib
+%build
+CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
+# Optimize that damned code all the way
+if [ ! -z "echo -n $RPM_OPT_FLAGS | grep pentium" ]; then
+  if [ ! -z which egcs ]; then
+    CC="egcs"
+  else
+    if [ ! -z which pgcc ]; then
+      CC="pgcc"
+    fi
+  fi
+fi
+
+CFLAGS="$RPM_OPT_FLAGS" ./configure --prefix=/usr
+			    
+%install
+rm -rf $RPM_BUILD_ROOT
+
+make install DESTDIR=$RPM_BUILD_ROOT
+make prefix=$RPM_BUILD_ROOT/usr install
+strip $RPM_BUILD_ROOT/usr/X11R6/lib/lib*.so.*.*
+strip $RPM_BUILD_ROOT/usr/{bin/imlib_config,lib/lib*.so.*.*}
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%post   -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
+
+%files
+%attr(755, root, root) /usr/X11R6/lib/lib*.so.*.*
+%attr(755, root, root) /usr/lib/lib*.so.*.*
+%attr(644, root, root) /usr/etc/*
+%attr(755, root, root) /usr/bin/imlib_config
+%files devel
+%defattr(644, root, root, 755)
+%doc README doc
+%doc README HACKING doc
+/usr/lib/lib*.so
+/usr/include/*
+%attr(755, root, root) /usr/bin/imlib-config
+%files static
+%attr(644, root, root) /usr/X11R6/lib/*a
+%attr(644, root, root) /usr/lib/*a
+%changelog
+* Sun Jan 31 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [1.7-2]
+- added -q %setup parameter,
+- changed Buildroot to /tmp/%%{name}-%%{version}-root,
+- added using %%{name} and %%{version} in Source,
+- added static subpackage,
+- changed dependencies to "Requires: %%{name} = %%{version}" in devel
+- changeded dependences to "Requires: %%{name} = %%{version}" in devel
+- added full %attr description in %files,
+- added stripping shared libraries and binarires,
+- added striping shared libraries and binarires,
+- /usr/bin/imlib-config moved to devel,
+- added pl translation (Wojtek ¦lusarczyk <wojtek@shadow.eu.org>).
+
+* Fri Apr 3 1998 Michael K. Johnson <johnsonm@redhat.com>
+- fixed typo
+
+* Fri Mar 13 1998 Marc Ewing <marc@redhat.com>
+- Added -k, Obsoletes
+- Integrate into CVS source tree
