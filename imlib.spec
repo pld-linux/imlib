@@ -101,7 +101,7 @@ rm -rf $RPM_BUILD_ROOT
 - added using %%{name} and %%{version} in Source,
 - added static subpackage,
 - changed dependencies to "Requires: %%{name} = %%{version}" in devel
-- changeded dependences to "Requires: %%{name} = %%{version}" in devel
+  subpackage,
 - added full %attr description in %files,
 - added stripping shared libraries and binarires,
 - added striping shared libraries and binarires,
