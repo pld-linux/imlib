@@ -121,7 +121,6 @@ imlib.
 
 %package static
 Summary:	Imlib static libraries
-Summary(es):	Static libraries for imlib development
 Summary(pl):	Biblioteki statyczne imlib
 Summary(pt_BR):	Bibliotecas estáticas para desenvolvimento com imlib
 Group:		X11/Development/Libraries
@@ -129,9 +128,6 @@ Requires:	%{name}-devel = %{version}
 
 %description static
 Imlib static libraries.
-
-%description static -l es
-Static libraries for imlib development.
 
 %description static -l pl
 Biblioteki statyczne imlib.
@@ -188,20 +184,20 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_applnkdir}/Settings/imlib-config.desktop
 %attr(755,root,root) %{_bindir}/imlib_config
+%{_mandir}/man1/imlib_config.1*
 
 %files devel
 %defattr(644,root,root,755)
 %doc doc/{*gif,*.html}
-
+%attr(755,root,root) %{_bindir}/imlib-config
 %attr(755,root,root) %{_libdir}/libImlib.so
 %attr(755,root,root) %{_libdir}/libgdk_imlib.so
 %{_libdir}/libImlib.la
 %{_libdir}/libgdk_imlib.la
-
-%attr(755,root,root) %{_bindir}/imlib-config
-
 %{_includedir}/*
 %{_aclocaldir}/*
+%{_pkgconfigdir}/*.pc
+%{_mandir}/man1/imlib-config.1*
 
 %files static
 %defattr(644,root,root,755)
