@@ -2,14 +2,14 @@ Summary:	Image loading and rendering library for X11R6
 Summary(pl):	Biblioteki do renderowania i ³adowania plików graficznych pod X'y
 Name:		imlib 
 Version:	1.9.4
-Release:	1
+Release:	2
 Copyright:	LGPL
 Group:		X11/Libraries
 Group(pl):	X11/Biblioteki
 Source:		ftp://ftp.gnome.org/pub/GNOME/source/%{name}/%{name}-%{version}.tar.gz
 URL:		http://www.labs.redhat.com/imlib/
-Requires:	gtk+ = 1.2.0
-Requires:	glib = 1.2.0
+Requires:	gtk+ = 1.2.1
+Requires:	glib = 1.2.1
 BuildRoot:	/tmp/%{name}-%{version}-root
 Obsoletes:	Imlib
 Conflicts:      glibc <= 2.0.7
@@ -113,6 +113,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(644,root,root) /usr/X11R6/lib/lib*.a
 
 %changelog
+* Thu Mar 25 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [1.9.4-2]
+- updated Requires to glib = 1.2.1, gtk = 1.2.1.
+
 * Sun Mar 14 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.9.4-1]
 - removed Requires without versions which now are generated automatically.
