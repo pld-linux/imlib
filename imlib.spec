@@ -180,8 +180,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libImlib.so.*.*
 %attr(755,root,root) %{_libdir}/libgdk_imlib.so.*.*
 %attr(755,root,root) %{_libdir}/libimlib-*.so
-%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/im_palette*.pal
-%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/imrc
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/im_palette*.pal
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/imrc
 
 %files cfgeditor -f %{name}.lang
 %defattr(644,root,root,755)
