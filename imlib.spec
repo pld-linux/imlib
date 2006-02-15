@@ -6,7 +6,7 @@ Summary(pl):	Biblioteki do renderowania i ³adowania grafiki pod X11R6
 Summary(pt_BR):	Biblioteca de carga e renderização para X11R6
 Name:		imlib
 Version:	1.9.15
-Release:	3
+Release:	4
 Epoch:		1
 License:	LGPL
 Group:		X11/Libraries
@@ -93,11 +93,12 @@ Summary(pl):	Pliki nag³ówkowe oraz dokumentacja do imlib
 Summary(pt_BR):	Arquivos de inclusão, bibliotecas e documentação para a Imlib
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	XFree86-devel
 Requires:	libjpeg-devel
 Requires:	libpng-devel
 Requires:	libtiff-devel
 Requires:	libungif-devel
+Requires:	xorg-lib-libSM-devel
+Requires:	xorg-lib-libXi-devel
 Requires:	zlib-devel
 Obsoletes:	libimlib1-devel
 
