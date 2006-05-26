@@ -23,12 +23,12 @@ URL:		http://www.labs.redhat.com/imlib/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
+BuildRequires:	giflib-devel
 BuildRequires:	gtk+-devel >= 1.2.1
 BuildRequires:	libjpeg-devel >= 6b-18
 BuildRequires:	libpng-devel >= 1.0.8
 BuildRequires:	libtiff-devel
 BuildRequires:	libtool
-BuildRequires:	libungif-devel
 BuildRequires:	zlib-devel
 Obsoletes:	libimlib1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -93,10 +93,10 @@ Summary(pl):	Pliki nag³ówkowe oraz dokumentacja do imlib
 Summary(pt_BR):	Arquivos de inclusão, bibliotecas e documentação para a Imlib
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+Requires:	giflib-devel
 Requires:	libjpeg-devel
 Requires:	libpng-devel
 Requires:	libtiff-devel
-Requires:	libungif-devel
 Requires:	xorg-lib-libSM-devel
 Requires:	xorg-lib-libXi-devel
 Requires:	zlib-devel
