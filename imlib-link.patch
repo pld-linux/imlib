@@ -20,3 +20,23 @@
  else
    CPPFLAGS="$CPPFLAGS $GTK_CFLAGS"
    GX_LIBS="$GTK_LIBS"
+--- imlib-1.9.15/imlib-config.in.orig	2006-08-27 01:18:27.940361000 +0200
++++ imlib-1.9.15/imlib-config.in	2006-08-27 01:20:09.714721500 +0200
+@@ -59,7 +59,7 @@
+       ;;
+     --libs)
+       libdirs=-L@libdir@
+-      echo $libdirs -lImlib $gx_libs @X_LIBS@ @X_PRE_LIBS@ -lXext -lX11 @X_EXTRA_LIBS@
++      echo $libdirs -lImlib $gx_libs @X_LIBS@ -lXext -lX11 @X_EXTRA_LIBS@
+       ;;
+     --libs-gdk)
+       libdirs=-L@libdir@
+--- imlib-1.9.15/imlib.pc.in.orig	2004-08-27 18:03:11.000000000 +0200
++++ imlib-1.9.15/imlib.pc.in	2006-08-27 01:20:29.887982250 +0200
+@@ -9,5 +9,5 @@
+ Description: An image loading and rendering library for X11R6
+ Version: @VERSION@
+ Requires:
+-Libs: -L${libdir} @LDFLAGS@ -lImlib @SUPPORT_LIBS@ @X_LIBS@ @X_PRE_LIBS@ -lXext -lX11 @X_EXTRA_LIBS@
++Libs: -L${libdir} @LDFLAGS@ -lImlib @SUPPORT_LIBS@ @X_LIBS@ -lXext -lX11 @X_EXTRA_LIBS@
+ Cflags: -I${includedir} @X_CFLAGS@
