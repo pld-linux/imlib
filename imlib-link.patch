@@ -1,0 +1,22 @@
+--- imlib-1.9.15/Imlib/Makefile.am.orig	2004-09-21 02:22:59.000000000 +0200
++++ imlib-1.9.15/Imlib/Makefile.am	2006-08-27 00:05:56.084387000 +0200
+@@ -32,7 +32,7 @@
+ 
+ libImlib_la_LDFLAGS    = -version-info 10:15:9
+ #libImlib_la_LDDADD     = $(SUPPORT_LIBS)
+-libImlib_la_LIBADD     = $(SUPPORT_LIBS) $(X_PRE_LIBS) \
++libImlib_la_LIBADD     = $(SUPPORT_LIBS) \
+ 			 $(X_LIBS) $(X_EXTRA_LIBS)
+ 
+ DEFS =  -DSYSTEM_IMRC=\"$(sysconfdir)/imrc\" \
+--- imlib-1.9.15/configure.in.orig	2006-08-27 00:03:59.173080000 +0200
++++ imlib-1.9.15/configure.in	2006-08-27 00:05:30.226771000 +0200
+@@ -137,7 +137,7 @@
+ if test -z "$GDK_IMLIB"; then
+   # see macros/gnome-x-checks.m4, and gtk.m4
+   CPPFLAGS="$CPPFLAGS $X_CFLAGS"
+-  GX_LIBS="$X_PRE_LIBS $X_LIBS -lX11 -lm"
++  GX_LIBS="$X_LIBS -lX11 -lm"
+ else
+   CPPFLAGS="$CPPFLAGS $GTK_CFLAGS"
+   GX_LIBS="$GTK_LIBS"
