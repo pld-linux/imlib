@@ -6,7 +6,7 @@ Summary(pl):	Biblioteki do renderowania i ³adowania grafiki pod X11R6
 Summary(pt_BR):	Biblioteca de carga e renderização para X11R6
 Name:		imlib
 Version:	1.9.15
-Release:	4
+Release:	5
 Epoch:		1
 License:	LGPL
 Group:		X11/Libraries
@@ -19,8 +19,8 @@ Patch2:		%{name}-config.patch
 Patch3:		%{name}-am18.patch
 Patch4:		%{name}-intl.patch
 Patch5:		%{name}-CAN-2004-1026.patch
-URL:		http://www.labs.redhat.com/imlib/
-BuildRequires:	autoconf
+Patch6:		%{name}-link.patch
+BuildRequires:	autoconf >= 2.59-9
 BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	giflib-devel
@@ -29,6 +29,7 @@ BuildRequires:	libjpeg-devel >= 6b-18
 BuildRequires:	libpng-devel >= 1.0.8
 BuildRequires:	libtiff-devel
 BuildRequires:	libtool
+BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	zlib-devel
 Obsoletes:	libimlib1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -97,8 +98,7 @@ Requires:	giflib-devel
 Requires:	libjpeg-devel
 Requires:	libpng-devel
 Requires:	libtiff-devel
-Requires:	xorg-lib-libSM-devel
-Requires:	xorg-lib-libXi-devel
+Requires:	xorg-lib-libX11-devel
 Requires:	zlib-devel
 Obsoletes:	libimlib1-devel
 
@@ -144,6 +144,7 @@ Bibliotecas estáticas para desenvolvimento com imlib.
 # temporary hack
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %build
 %{__gettextize}
