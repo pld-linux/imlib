@@ -1,9 +1,9 @@
 Summary:	Image loading and rendering library for X11R6
-Summary(es):	Biblioteca de carga y render 3D para X11R6
-Summary(fr):	Librairie de chargement et interprétation d'images pour X11R6
-Summary(ko):	X11R6¸¦ À§ÇÑ ±×¸² ÀĞ±â/È­¸é¿¡ ±×·ÁÁÖ±â ¶óÀÌºê·¯¸®
-Summary(pl):	Biblioteki do renderowania i ³adowania grafiki pod X11R6
-Summary(pt_BR):	Biblioteca de carga e renderização para X11R6
+Summary(es.UTF-8):   Biblioteca de carga y render 3D para X11R6
+Summary(fr.UTF-8):   Librairie de chargement et interprÃ©tation d'images pour X11R6
+Summary(ko.UTF-8):   X11R6ë¥¼ ìœ„í•œ ê·¸ë¦¼ ì½ê¸°/í™”ë©´ì— ê·¸ë ¤ì£¼ê¸° ë¼ì´ë¸ŒëŸ¬ë¦¬
+Summary(pl.UTF-8):   Biblioteki do renderowania i Å‚adowania grafiki pod X11R6
+Summary(pt_BR.UTF-8):   Biblioteca de carga e renderizaÃ§Ã£o para X11R6
 Name:		imlib
 Version:	1.9.15
 Release:	6
@@ -41,31 +41,31 @@ Imlib is an advanced replacement library for libraries like libXpm
 that provides many more features with much greater flexability and
 speed.
 
-%description -l es
+%description -l es.UTF-8
 Imlib es una biblioteca avanzada que sustituye las bibliotecas libXpm
-que ofrece mucho más opciones/características con una flexibilidad y
+que ofrece mucho mÃ¡s opciones/caracterÃ­sticas con una flexibilidad y
 velocidad mucho mayores.
 
-%description -l fr
-Imlib est une librairie de remplacement avancée pour les librairies
-comme libXpm qui fourni plus d'atouts et beaucoup plus de flexibilité
+%description -l fr.UTF-8
+Imlib est une librairie de remplacement avancÃ©e pour les librairies
+comme libXpm qui fourni plus d'atouts et beaucoup plus de flexibilitÃ©
 et de vitesse.
 
-%description -l pl
+%description -l pl.UTF-8
 Imlib jest zaawansowanym zamiennikiem bibliotek typu libXpm, ze
-zwiêkszon± elastyczno¶ci± oraz prêdko¶ci±.
+zwiÄ™kszonÄ… elastycznoÅ›ciÄ… oraz prÄ™dkoÅ›ciÄ….
 
-%description -l pt_BR
-A imlib é uma biblioteca avançada que substitui as bibliotecas libXpm
-que fornece muito mais opções/características com uma flexibilidade e
+%description -l pt_BR.UTF-8
+A imlib Ã© uma biblioteca avanÃ§ada que substitui as bibliotecas libXpm
+que fornece muito mais opÃ§Ãµes/caracterÃ­sticas com uma flexibilidade e
 velocidade muito maiores.
 
 %package cfgeditor
 Summary:	Imlib configuration editor
-Summary(es):	Editor de configuración de imlib
-Summary(ko):	Imlib¶óÀÌºê·¯¸®¿ë ¼³Á¤ ÆíÁı±â
-Summary(pl):	Edytor konfiguracji do biblioteki imlib
-Summary(pt_BR):	Editor da configuração da imlib
+Summary(es.UTF-8):   Editor de configuraciÃ³n de imlib
+Summary(ko.UTF-8):   Imlibë¼ì´ë¸ŒëŸ¬ë¦¬ìš© ì„¤ì • í¸ì§‘ê¸°
+Summary(pl.UTF-8):   Edytor konfiguracji do biblioteki imlib
+Summary(pt_BR.UTF-8):   Editor da configuraÃ§Ã£o da imlib
 Group:		X11/Applications
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
@@ -73,25 +73,25 @@ Requires:	%{name} = %{epoch}:%{version}-%{release}
 The imlib_config program allows you to control the way imlib uses
 color and handles gamma correction/etc.
 
-%description cfgeditor -l es
+%description cfgeditor -l es.UTF-8
 El programa imlib_config te permite controlar como imlib usa los
-colores y manipula la corrección gamma, etc.
+colores y manipula la correcciÃ³n gamma, etc.
 
-%description cfgeditor -l pl
-Program imlib_config umo¿liwia zmianê sposobu u¿ywania przez
-bibliotekê imlib kolorów, korekcji gamma i innych.
+%description cfgeditor -l pl.UTF-8
+Program imlib_config umoÅ¼liwia zmianÄ™ sposobu uÅ¼ywania przez
+bibliotekÄ™ imlib kolorÃ³w, korekcji gamma i innych.
 
-%description cfgeditor -l pt_BR
+%description cfgeditor -l pt_BR.UTF-8
 O programa imlib_config lhe permite controlar como a imlib usa as
-cores e trata correção gamma, etc.
+cores e trata correÃ§Ã£o gamma, etc.
 
 %package devel
 Summary:	Imlib header files and development documentation
-Summary(es):	Archivos de inclusión, bibliotecas y documentación para Imlib
-Summary(fr):	Fichiers entête pour Imlib
-Summary(ko):	Imlib ÀÀ¿ëÇÁ·Î±×·¥µéÀ» À§ÇÑ °³¹ß µµ±¸
-Summary(pl):	Pliki nag³ówkowe oraz dokumentacja do imlib
-Summary(pt_BR):	Arquivos de inclusão, bibliotecas e documentação para a Imlib
+Summary(es.UTF-8):   Archivos de inclusiÃ³n, bibliotecas y documentaciÃ³n para Imlib
+Summary(fr.UTF-8):   Fichiers entÃªte pour Imlib
+Summary(ko.UTF-8):   Imlib ì‘ìš©í”„ë¡œê·¸ë¨ë“¤ì„ ìœ„í•œ ê°œë°œ ë„êµ¬
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe oraz dokumentacja do imlib
+Summary(pt_BR.UTF-8):   Arquivos de inclusÃ£o, bibliotecas e documentaÃ§Ã£o para a Imlib
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	giflib-devel
@@ -105,35 +105,35 @@ Obsoletes:	libimlib1-devel
 %description devel
 Header files and development documentation for Imlib.
 
-%description devel -l es
-Archivos de inclusión, bibliotecas estáticas y documentación para
+%description devel -l es.UTF-8
+Archivos de inclusiÃ³n, bibliotecas estÃ¡ticas y documentaciÃ³n para
 imlib.
 
-%description devel -l fr
-Fichiers entête pour Imlib.
+%description devel -l fr.UTF-8
+Fichiers entÃªte pour Imlib.
 
-%description devel -l pl
-Pliki nag³ówkowe oraz dokumentacja do biblioteki Imlib.
+%description devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe oraz dokumentacja do biblioteki Imlib.
 
-%description devel -l pt_BR
-Arquivos de inclusão, bibliotecas estáticas e documentação para a
+%description devel -l pt_BR.UTF-8
+Arquivos de inclusÃ£o, bibliotecas estÃ¡ticas e documentaÃ§Ã£o para a
 imlib.
 
 %package static
 Summary:	Imlib static libraries
-Summary(pl):	Biblioteki statyczne imlib
-Summary(pt_BR):	Bibliotecas estáticas para desenvolvimento com imlib
+Summary(pl.UTF-8):   Biblioteki statyczne imlib
+Summary(pt_BR.UTF-8):   Bibliotecas estÃ¡ticas para desenvolvimento com imlib
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
 %description static
 Imlib static libraries.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Biblioteki statyczne imlib.
 
-%description static -l pt_BR
-Bibliotecas estáticas para desenvolvimento com imlib.
+%description static -l pt_BR.UTF-8
+Bibliotecas estÃ¡ticas para desenvolvimento com imlib.
 
 %prep
 %setup -q
