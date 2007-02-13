@@ -1,9 +1,9 @@
 Summary:	Image loading and rendering library for X11R6
-Summary(es.UTF-8):   Biblioteca de carga y render 3D para X11R6
-Summary(fr.UTF-8):   Librairie de chargement et interprétation d'images pour X11R6
-Summary(ko.UTF-8):   X11R6를 위한 그림 읽기/화면에 그려주기 라이브러리
-Summary(pl.UTF-8):   Biblioteki do renderowania i ładowania grafiki pod X11R6
-Summary(pt_BR.UTF-8):   Biblioteca de carga e renderização para X11R6
+Summary(es.UTF-8):	Biblioteca de carga y render 3D para X11R6
+Summary(fr.UTF-8):	Librairie de chargement et interprétation d'images pour X11R6
+Summary(ko.UTF-8):	X11R6를 위한 그림 읽기/화면에 그려주기 라이브러리
+Summary(pl.UTF-8):	Biblioteki do renderowania i ładowania grafiki pod X11R6
+Summary(pt_BR.UTF-8):	Biblioteca de carga e renderização para X11R6
 Name:		imlib
 Version:	1.9.15
 Release:	6
@@ -62,10 +62,10 @@ velocidade muito maiores.
 
 %package cfgeditor
 Summary:	Imlib configuration editor
-Summary(es.UTF-8):   Editor de configuración de imlib
-Summary(ko.UTF-8):   Imlib라이브러리용 설정 편집기
-Summary(pl.UTF-8):   Edytor konfiguracji do biblioteki imlib
-Summary(pt_BR.UTF-8):   Editor da configuração da imlib
+Summary(es.UTF-8):	Editor de configuración de imlib
+Summary(ko.UTF-8):	Imlib라이브러리용 설정 편집기
+Summary(pl.UTF-8):	Edytor konfiguracji do biblioteki imlib
+Summary(pt_BR.UTF-8):	Editor da configuração da imlib
 Group:		X11/Applications
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
@@ -87,11 +87,11 @@ cores e trata correção gamma, etc.
 
 %package devel
 Summary:	Imlib header files and development documentation
-Summary(es.UTF-8):   Archivos de inclusión, bibliotecas y documentación para Imlib
-Summary(fr.UTF-8):   Fichiers entête pour Imlib
-Summary(ko.UTF-8):   Imlib 응용프로그램들을 위한 개발 도구
-Summary(pl.UTF-8):   Pliki nagłówkowe oraz dokumentacja do imlib
-Summary(pt_BR.UTF-8):   Arquivos de inclusão, bibliotecas e documentação para a Imlib
+Summary(es.UTF-8):	Archivos de inclusión, bibliotecas y documentación para Imlib
+Summary(fr.UTF-8):	Fichiers entête pour Imlib
+Summary(ko.UTF-8):	Imlib 응용프로그램들을 위한 개발 도구
+Summary(pl.UTF-8):	Pliki nagłówkowe oraz dokumentacja do imlib
+Summary(pt_BR.UTF-8):	Arquivos de inclusão, bibliotecas e documentação para a Imlib
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	giflib-devel
@@ -121,8 +121,8 @@ imlib.
 
 %package static
 Summary:	Imlib static libraries
-Summary(pl.UTF-8):   Biblioteki statyczne imlib
-Summary(pt_BR.UTF-8):   Bibliotecas estáticas para desenvolvimento com imlib
+Summary(pl.UTF-8):	Biblioteki statyczne imlib
+Summary(pt_BR.UTF-8):	Bibliotecas estáticas para desenvolvimento com imlib
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
