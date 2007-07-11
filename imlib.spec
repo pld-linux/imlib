@@ -21,6 +21,7 @@ Patch4:		%{name}-intl.patch
 Patch5:		%{name}-CAN-2004-1026.patch
 Patch6:		%{name}-link.patch
 Patch7:		%{name}-16bit_depth_fix.patch
+BuildRequires:	XFree86-devel
 BuildRequires:	autoconf >= 2.59-9
 BuildRequires:	automake
 BuildRequires:	gettext-devel
@@ -30,7 +31,6 @@ BuildRequires:	libjpeg-devel >= 6b-18
 BuildRequires:	libpng-devel >= 1.0.8
 BuildRequires:	libtiff-devel
 BuildRequires:	libtool
-BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	zlib-devel
 Obsoletes:	libimlib1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -95,11 +95,11 @@ Summary(pl.UTF-8):	Pliki nagłówkowe oraz dokumentacja do imlib
 Summary(pt_BR.UTF-8):	Arquivos de inclusão, bibliotecas e documentação para a Imlib
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+Requires:	XFree86-devel
 Requires:	giflib-devel
 Requires:	libjpeg-devel
 Requires:	libpng-devel
 Requires:	libtiff-devel
-Requires:	xorg-lib-libX11-devel
 Requires:	zlib-devel
 Obsoletes:	libimlib1-devel
 
