@@ -8,9 +8,9 @@ Name:		imlib
 Version:	1.9.15
 Release:	8
 Epoch:		1
-License:	LGPL
+License:	LGPL v2
 Group:		X11/Libraries
-Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/imlib/1.9/%{name}-%{version}.tar.bz2
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/imlib/1.9/%{name}-%{version}.tar.bz2
 # Source0-md5:	7db987e6c52e4daf70d7d0f471238eae
 Source1:	%{name}-config.desktop
 Patch0:		%{name}-m4_fix.patch
