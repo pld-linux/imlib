@@ -6,7 +6,7 @@ Summary(pl.UTF-8):	Biblioteki do renderowania i ładowania grafiki pod X11R6
 Summary(pt_BR.UTF-8):	Biblioteca de carga e renderização para X11R6
 Name:		imlib
 Version:	1.9.15
-Release:	8
+Release:	9
 Epoch:		1
 License:	LGPL v2
 Group:		X11/Libraries
@@ -21,6 +21,7 @@ Patch4:		%{name}-intl.patch
 Patch5:		%{name}-CAN-2004-1026.patch
 Patch6:		%{name}-link.patch
 Patch7:		%{name}-16bit_depth_fix.patch
+Patch8:		%{name}-exa_fix.patch
 BuildRequires:	autoconf >= 2.59-9
 BuildRequires:	automake
 BuildRequires:	gettext-devel
@@ -147,6 +148,7 @@ Bibliotecas estáticas para desenvolvimento com imlib.
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 
 %build
 %{__gettextize}
