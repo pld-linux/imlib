@@ -44,5 +44,5 @@ Exec=imlib_config
 Icon=gnome-note
 Terminal=false
 Type=Application
-Categories=Application;System;Settings;
+Categories=System;Settings;
 # vi: encoding=utf-8
