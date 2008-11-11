@@ -1,0 +1,10 @@
+--- configure.in~	2008-11-11 16:36:20.781816147 +0100
++++ configure.in	2008-11-11 16:37:50.264515134 +0100
+@@ -65,6 +65,7 @@
+ dnl (in a rather ugly way even)
+ builddir=`pwd`
+ if $dynworks; then
++   m4_ifdef([LT_OUTPUT], [LT_OUTPUT])
+    imlib_libtool_config="$builddir/libtool --config"
+    imlib_deplibs_check=`$imlib_libtool_config | \
+       grep '^[[a-z_]]*check[[a-z_]]*_method=[['\''"]]' | \
