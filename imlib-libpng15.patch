@@ -1,0 +1,236 @@
+$OpenBSD: patch-Imlib_utils_c,v 1.4 2011/07/08 20:36:09 naddy Exp $
+--- Imlib/utils.c.orig	Fri Mar 22 07:43:04 2002
++++ Imlib/utils.c	Mon Jul  4 17:36:44 2011
+@@ -801,6 +801,7 @@ Imlib_crop_and_clone_image(ImlibData * id, ImlibImage 
+   unsigned char      *ptr1, *ptr2;
+   ImlibImage         *im2;
+   char               *s;
++  size_t              s_size;
+ 
+   if (!im)
+     return NULL;
+@@ -872,10 +873,11 @@ Imlib_crop_and_clone_image(ImlibData * id, ImlibImage 
+   im2->rgb_width = w;
+   im2->rgb_height = h;
+   im2->alpha_data = NULL;
+-  s = malloc(strlen(im->filename) + 320);
++  s_size = strlen(im->filename + 320);
++  s = malloc(s_size);
+   if (s)
+     {
+-      snprintf(s, sizeof(s), "%s_%x_%x", im->filename, (int)time(NULL), (int)rand());
++      snprintf(s, s_size, "%s_%x_%x", im->filename, (int)time(NULL), (int)rand());
+       im2->filename = malloc(strlen(s) + 1);
+       if (im2->filename)
+ 	strcpy(im2->filename, s);
+@@ -1211,6 +1213,7 @@ Imlib_clone_image(ImlibData * id, ImlibImage * im)
+ {
+   ImlibImage         *im2;
+   char               *s;
++  size_t              s_size;
+ 
+   if (!im)
+     return NULL;
+@@ -1239,10 +1242,11 @@ Imlib_clone_image(ImlibData * id, ImlibImage * im)
+     }
+   else
+     im2->alpha_data = NULL;
+-  s = malloc(strlen(im->filename) + 320);
++  s_size = strlen(im->filename) + 320;
++  s = malloc(s_size);
+   if (s)
+     {
+-      snprintf(s, sizeof(s), "%s_%x_%x", im->filename, (int)time(NULL), (int)rand());
++      snprintf(s, s_size, "%s_%x_%x", im->filename, (int)time(NULL), (int)rand());
+       im2->filename = malloc(strlen(s) + 1);
+       if (im2->filename)
+ 	strcpy(im2->filename, s);
+@@ -1285,6 +1289,7 @@ Imlib_clone_scaled_image(ImlibData * id, ImlibImage * 
+ {
+   ImlibImage         *im2;
+   char               *s;
++  size_t              s_size;
+ 
+   if ((!im) || (w <= 0) || (h <= 0))
+     return NULL;
+@@ -1417,10 +1422,11 @@ Imlib_clone_scaled_image(ImlibData * id, ImlibImage * 
+     }
+   else
+     im2->alpha_data = NULL;
+-  s = malloc(strlen(im->filename) + 320);
++  s_size = strlen(im->filename) + 320;
++  s = malloc(s_size);
+   if (s)
+     {
+-      snprintf(s, sizeof(s), "%s_%x_%x_%x_%x", im->filename, (int)time(NULL), w, h, (int)rand());
++      snprintf(s, s_size, "%s_%x_%x_%x_%x", im->filename, (int)time(NULL), w, h, (int)rand());
+       im2->filename = malloc(strlen(s) + 1);
+       if (im2->filename)
+ 	strcpy(im2->filename, s);
+@@ -1596,7 +1602,7 @@ Imlib_create_image_from_xpm_data(ImlibData * id, char 
+ 		{
+ 		  if (line[k] != ' ')
+ 		    {
+-		      sscanf(&line[k], "%65536s", s);
++		      sscanf(&line[k], "%255s", s);
+ 		      k += strlen(s);
+ 		      if (!strcmp(s, "c"))
+ 			iscolor = 1;
+@@ -1959,13 +1965,13 @@ Imlib_inlined_png_to_image(ImlibData *id, unsigned cha
+       return NULL;
+     }
+   
+-  if (setjmp(png_ptr->jmpbuf))
++  if (setjmp(png_jmpbuf(png_ptr)))
+     {
+       png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
+       return NULL;
+     }
+   
+-  if (info_ptr->color_type == PNG_COLOR_TYPE_RGB_ALPHA)
++  if (png_get_color_type(png_ptr, info_ptr) == PNG_COLOR_TYPE_RGB_ALPHA)
+     {
+       png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
+       return NULL;
+$OpenBSD: patch-Imlib_load_c,v 1.7 2011/07/08 20:36:09 naddy Exp $
+--- Imlib/load.c.orig	Fri Mar 22 07:43:04 2002
++++ Imlib/load.c	Mon Jul  4 17:33:14 2011
+@@ -191,12 +191,12 @@ _LoadPNG(ImlibData * id, FILE * f, int *w, int *h, int
+       png_destroy_read_struct(&png_ptr, NULL, NULL);
+       return NULL;
+     }
+-  if (setjmp(png_ptr->jmpbuf))
++  if (setjmp(png_jmpbuf(png_ptr)))
+     {
+       png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
+       return NULL;
+     }
+-  if (info_ptr->color_type == PNG_COLOR_TYPE_RGB_ALPHA)
++  if (png_get_color_type(png_ptr, info_ptr) == PNG_COLOR_TYPE_RGB_ALPHA)
+     {
+       png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
+       return NULL;
+@@ -254,7 +254,8 @@ _LoadPNG(ImlibData * id, FILE * f, int *w, int *h, int
+   png_read_image(png_ptr, lines);
+   png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
+   ptr = data;
+-  if (color_type == PNG_COLOR_TYPE_GRAY_ALPHA)
++  if (color_type == PNG_COLOR_TYPE_GRAY
++      || color_type == PNG_COLOR_TYPE_GRAY_ALPHA)
+     {
+       for (y = 0; y < *h; y++)
+ 	{
+@@ -1061,7 +1098,7 @@ _LoadXPM(ImlibData * id, FILE *file, int *w, int *h, i
+ 			  if (line[k] != ' ')
+ 			    {
+ 			      s[0] = 0;
+-			      sscanf(&line[k], "%256s", s);
++			      sscanf(&line[k], "%255s", s);
+ 			      slen = strlen(s);
+ 			      k += slen;
+ 			      if (!strcmp(s, "c"))
+@@ -1861,7 +1898,7 @@ Imlib_load_image(ImlibData * id, char *file)
+ 	  free(im);
+ 	  return NULL;
+ 	}
+-      sscanf(s, "%256s %i", s1, &num);
++      sscanf(s, "%255s %i", s1, &num);
+       if (num <= 0)
+ 	{
+ 	  fclose(p);
+@@ -1870,10 +1907,10 @@ Imlib_load_image(ImlibData * id, char *file)
+ 	}
+       while (fgets(s, 4096, p))
+ 	{
+-	  sscanf(s, "%256s", s1);
++	  sscanf(s, "%255s", s1);
+ 	  if (!strcmp("IMAGE", s1))
+ 	    {
+-	      sscanf(s, "%256s %i %256s %i %i %i %i %i %i %i %i %i", s1, &size,
++	      sscanf(s, "%255s %i %255s %i %i %i %i %i %i %i %i %i", s1, &size,
+ 		     s2, &w, &h, &r, &g, &b, &bl, &br, &bt, &bb);
+ 	      if (!iden[0])
+ 		break;
+$OpenBSD: patch-gdk_imlib_io-png_c,v 1.4 2011/07/08 20:36:09 naddy Exp $
+
+Fix build with png-1.5.
+
+--- gdk_imlib/io-png.c.orig	Mon Mar  4 10:06:29 2002
++++ gdk_imlib/io-png.c	Mon Jul  4 17:01:55 2011
+@@ -40,13 +40,13 @@ loader_png (FILE * f, int *w, int *h, int *t)
+       return NULL;
+     }
+ 
+-  if (setjmp(png_ptr->jmpbuf))
++  if (setjmp(png_jmpbuf(png_ptr)))
+     {
+       png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
+       return NULL;
+     }
+ 
+-  if (info_ptr->color_type == PNG_COLOR_TYPE_RGB_ALPHA)
++  if (png_get_color_type(png_ptr, info_ptr) == PNG_COLOR_TYPE_RGB_ALPHA)
+     {
+       png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
+       return NULL;
+@@ -275,13 +275,13 @@ inline_png(unsigned char *data, int data_size)
+       return NULL;
+     }
+   
+-  if (setjmp(png_ptr->jmpbuf))
++  if (setjmp(png_jmpbuf(png_ptr)))
+     {
+       png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
+       return NULL;
+     }
+   
+-  if (info_ptr->color_type == PNG_COLOR_TYPE_RGB_ALPHA)
++  if (png_get_color_type(png_ptr, info_ptr) == PNG_COLOR_TYPE_RGB_ALPHA)
+     {
+       png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
+       return NULL;
+@@ -301,6 +301,8 @@ inline_png(unsigned char *data, int data_size)
+   /* Setup Translators */
+   if (color_type == PNG_COLOR_TYPE_PALETTE)
+     png_set_expand(png_ptr);
++  if (color_type == PNG_COLOR_TYPE_GRAY && bit_depth < 8)
++    png_set_expand(png_ptr);
+   png_set_strip_16(png_ptr);
+   png_set_packing(png_ptr);
+   if (png_get_valid(png_ptr, info_ptr, PNG_INFO_tRNS))
+@@ -440,13 +442,13 @@ _loader_alpha_png (FILE * f, int *w, int *h, int *t, u
+ 		return NULL;
+ 	}
+ 	
+-	if (setjmp(png_ptr->jmpbuf))
++	if (setjmp(png_jmpbuf(png_ptr)))
+ 	{
+ 		png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
+ 		return NULL;
+ 	}
+ 	
+-	if (info_ptr->color_type == PNG_COLOR_TYPE_RGB_ALPHA)
++	if (png_get_color_type(png_ptr, info_ptr) == PNG_COLOR_TYPE_RGB_ALPHA)
+ 	{
+ 		png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
+ 		return NULL;
+@@ -635,7 +637,7 @@ saver_png (GdkImlibImage *im, char *file, GdkImlibSave
+ 	      png_destroy_write_struct(&png_ptr, (png_infopp) NULL);
+ 	      return 0;
+ 	    }
+-	  if (setjmp(png_ptr->jmpbuf))
++	  if (setjmp(png_jmpbuf(png_ptr)))
+ 	    {
+ 	      fclose(f);
+ 	      png_destroy_write_struct(&png_ptr, (png_infopp) NULL);
+--- Imlib/save.c~	2004-09-21 02:22:59.000000000 +0200
++++ Imlib/save.c	2012-02-12 14:36:50.271138211 +0100
+@@ -342,7 +342,7 @@
+ 	      png_destroy_write_struct(&png_ptr, (png_infopp) NULL);
+ 	      return 0;
+ 	    }
+-	  if (setjmp(png_ptr->jmpbuf))
++	  if (setjmp(png_jmpbuf(png_ptr)))
+ 	    {
+ 	      fclose(f);
+ 	      png_destroy_write_struct(&png_ptr, (png_infopp) NULL);
