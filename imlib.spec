@@ -177,7 +177,7 @@ install -d $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 
 # no static modules and *.la for modules - shut up check-files
-rm -f $RPM_BUILD_ROOT%{_libdir}/libimlib-*.{la,a}
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libimlib-*.{la,a}
 
 %find_lang %{name}
 
@@ -189,9 +189,19 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libImlib.so.*.*
-%attr(755,root,root) %{_libdir}/libgdk_imlib.so.*.*
-%attr(755,root,root) %{_libdir}/libimlib-*.so
+%doc AUTHORS ChangeLog README
+%attr(755,root,root) %{_libdir}/libImlib.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libImlib.so.1
+%attr(755,root,root) %{_libdir}/libgdk_imlib.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libgdk_imlib.so.1
+%attr(755,root,root) %{_libdir}/libimlib-bmp.so
+%attr(755,root,root) %{_libdir}/libimlib-gif.so
+%attr(755,root,root) %{_libdir}/libimlib-jpeg.so
+%attr(755,root,root) %{_libdir}/libimlib-png.so
+%attr(755,root,root) %{_libdir}/libimlib-ppm.so
+%attr(755,root,root) %{_libdir}/libimlib-ps.so
+%attr(755,root,root) %{_libdir}/libimlib-tiff.so
+%attr(755,root,root) %{_libdir}/libimlib-xpm.so
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/im_palette*.pal
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/imrc
 
@@ -203,15 +213,17 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc doc/{*gif,*.html}
+%doc doc/{*.gif,*.html}
 %attr(755,root,root) %{_bindir}/imlib-config
 %attr(755,root,root) %{_libdir}/libImlib.so
 %attr(755,root,root) %{_libdir}/libgdk_imlib.so
 %{_libdir}/libImlib.la
 %{_libdir}/libgdk_imlib.la
-%{_includedir}/*
-%{_aclocaldir}/*
-%{_pkgconfigdir}/*.pc
+%{_includedir}/Imlib*.h
+%{_includedir}/gdk_imlib*.h
+%{_aclocaldir}/imlib.m4
+%{_pkgconfigdir}/imlib.pc
+%{_pkgconfigdir}/imlibgdk.pc
 %{_mandir}/man1/imlib-config.1*
 
 %files static
