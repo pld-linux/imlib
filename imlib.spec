@@ -6,7 +6,7 @@ Summary(pl.UTF-8):	Biblioteki do renderowania i ładowania grafiki pod X11R6
 Summary(pt_BR.UTF-8):	Biblioteca de carga e renderização para X11R6
 Name:		imlib
 Version:	1.9.15
-Release:	21
+Release:	22
 Epoch:		1
 License:	LGPL v2
 Group:		X11/Libraries
@@ -25,10 +25,11 @@ Patch8:		%{name}-exa_fix.patch
 Patch9:		%{name}-ac.patch
 Patch10:	%{name}-libpng.patch
 Patch11:	%{name}-libpng15.patch
+Patch12:	%{name}-giflib.patch
 BuildRequires:	autoconf >= 2.59-9
 BuildRequires:	automake
 BuildRequires:	gettext-devel
-BuildRequires:	giflib-devel
+BuildRequires:	giflib-devel >= 5
 BuildRequires:	gtk+-devel >= 1.2.1
 BuildRequires:	libjpeg-devel >= 6b-18
 BuildRequires:	libpng-devel >= 1.0.8
@@ -99,7 +100,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe oraz dokumentacja do imlib
 Summary(pt_BR.UTF-8):	Arquivos de inclusão, bibliotecas e documentação para a Imlib
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	giflib-devel
+Requires:	giflib-devel >= 5
 Requires:	libjpeg-devel
 Requires:	libpng-devel
 Requires:	libtiff-devel
@@ -155,6 +156,7 @@ Bibliotecas estáticas para desenvolvimento com imlib.
 %patch9 -p0
 %patch10 -p1
 %patch11 -p0
+%patch12 -p1
 
 %build
 %{__gettextize}

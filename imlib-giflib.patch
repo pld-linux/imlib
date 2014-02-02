@@ -1,0 +1,82 @@
+--- imlib-1.9.15/gdk_imlib/io-gif.c.orig	2014-02-02 08:59:39.063076948 +0100
++++ imlib-1.9.15/gdk_imlib/io-gif.c	2014-02-02 09:09:41.823051652 +0100
+@@ -10,6 +10,12 @@
+ #else
+ #include <gif_lib.h>
+ 
++static void print_gif_error(int error_code)
++{
++  const char *err = GifErrorString(error_code);
++  fprintf(stderr, "gdk_imlib: giflib error %d: %s.\n", error_code, err);
++}
++
+ unsigned char      *
+ loader_gif(FILE *f, int *w, int *h, int *t)
+ {
+@@ -30,7 +36,7 @@
+   fd = fileno(f);
+   /* Apparently rewind(f) isn't sufficient */
+   lseek(fd, (long) 0, 0);
+-  gif = DGifOpenFileHandle(fd);
++  gif = DGifOpenFileHandle(fd, NULL);
+ 
+   transp = -1;
+   data = NULL;
+@@ -43,14 +49,14 @@
+     {
+       if (DGifGetRecordType(gif, &rec) == GIF_ERROR)
+ 	{
+-	  PrintGifError();
++	  print_gif_error(gif->Error);
+ 	  rec = TERMINATE_RECORD_TYPE;
+ 	}
+       if ((rec == IMAGE_DESC_RECORD_TYPE) && (!done))
+ 	{
+ 	  if (DGifGetImageDesc(gif) == GIF_ERROR)
+ 	    {
+-	      PrintGifError();
++	      print_gif_error(gif->Error);
+ 	      rec = TERMINATE_RECORD_TYPE;
+ 	    }
+ 	  *w = gif->Image.Width;
+--- imlib-1.9.15/Imlib/load.c.orig	2014-02-02 08:59:39.119743612 +0100
++++ imlib-1.9.15/Imlib/load.c	2014-02-02 09:16:12.426368593 +0100
+@@ -429,6 +429,12 @@
+ #endif /* HAVE_LIBTIFF */
+ 
+ #ifdef HAVE_LIBGIF
++static void print_gif_error(int error_code)
++{
++  const char *err = GifErrorString(error_code);
++  fprintf(stderr, "gdk_imlib: giflib error %d: %s.\n", error_code, err);
++}
++
+ unsigned char      *
+ _LoadGIF(ImlibData * id, FILE *f, int *w, int *h, int *t)
+ {
+@@ -452,7 +458,7 @@
+   fd = fileno(f);
+   /* Apparently rewind(f) isn't sufficient */
+   lseek(fd, (long) 0, 0);
+-  gif = DGifOpenFileHandle(fd);
++  gif = DGifOpenFileHandle(fd, NULL);
+ 
+   if (!gif)
+     return NULL;
+@@ -460,14 +466,14 @@
+     {
+       if (DGifGetRecordType(gif, &rec) == GIF_ERROR)
+ 	{
+-	  PrintGifError();
++	  print_gif_error(gif->Error);
+ 	  rec = TERMINATE_RECORD_TYPE;
+ 	}
+       if ((rec == IMAGE_DESC_RECORD_TYPE) && (!done))
+ 	{
+ 	  if (DGifGetImageDesc(gif) == GIF_ERROR)
+ 	    {
+-	      PrintGifError();
++	      print_gif_error(gif->Error);
+ 	      rec = TERMINATE_RECORD_TYPE;
+ 	    }
+ 	  *w = gif->Image.Width;
