@@ -6,7 +6,7 @@ Summary(pl.UTF-8):	Biblioteki do renderowania i ładowania grafiki pod X11R6
 Summary(pt_BR.UTF-8):	Biblioteca de carga e renderização para X11R6
 Name:		imlib
 Version:	1.9.15
-Release:	23
+Release:	24
 Epoch:		1
 License:	LGPL v2
 Group:		X11/Libraries
