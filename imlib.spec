@@ -28,7 +28,7 @@ Patch11:	%{name}-libpng15.patch
 Patch12:	%{name}-giflib.patch
 BuildRequires:	autoconf >= 2.59-9
 BuildRequires:	automake
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	giflib-devel >= 5
 BuildRequires:	gtk+-devel >= 1.2.1
 BuildRequires:	libjpeg-devel >= 6b-18
