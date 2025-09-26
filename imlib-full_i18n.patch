@@ -6,7 +6,7 @@ diff -Nru imlib-1.9.10/Makefile.am imlib-1.9.10.new/Makefile.am
 +SUBDIRS = intl po @GDK_IMLIB@ Imlib config doc
  bin_SCRIPTS = imlib-config
  
- EXTRA_DIST = imlib.spec.in imlib.m4 configure configure.in \
+ man_MANS = imlib-config.1
 diff -Nru imlib-1.9.10/configure.in imlib-1.9.10.new/configure.in
 --- imlib-1.9.10/configure.in	Wed Mar 28 06:10:41 2001
 +++ imlib-1.9.10.new/configure.in	Thu Apr 12 02:15:09 2001
