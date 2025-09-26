@@ -1,0 +1,12 @@
+--- imlib-1.9.15/configure.in.orig	2025-09-26 19:43:42.787101670 +0200
++++ imlib-1.9.15/configure.in	2025-09-26 19:53:38.307134865 +0200
+@@ -49,7 +49,8 @@ if test "x$GDK_IMLIB" != x; then
+   AC_TRY_RUN([
+ #include <glib.h>
+ #include <gmodule.h>
+-main ()
++#include <stdlib.h>
++int main ()
+ {
+     if (g_module_supported ())
+         exit (0);

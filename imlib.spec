@@ -17,7 +17,7 @@ Patch0:		%{name}-m4_fix.patch
 Patch1:		%{name}-full_i18n.patch
 Patch2:		%{name}-config.patch
 Patch3:		%{name}-am18.patch
-Patch4:		%{name}-intl.patch
+Patch4:		%{name}-gmodule.patch
 Patch5:		%{name}-CAN-2004-1026.patch
 Patch6:		%{name}-link.patch
 Patch7:		%{name}-16bit_depth_fix.patch
@@ -147,7 +147,6 @@ Bibliotecas estáticas para desenvolvimento com imlib.
 %patch -P1 -p1
 %patch -P2 -p1
 %patch -P3 -p1
-# temporary hack
 %patch -P4 -p1
 %patch -P5 -p1
 %patch -P6 -p1
