@@ -161,7 +161,7 @@ Bibliotecas estáticas para desenvolvimento com imlib.
 %build
 %{__gettextize}
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
@@ -176,10 +176,12 @@ install -d $RPM_BUILD_ROOT%{_desktopdir}
 	DESTDIR=$RPM_BUILD_ROOT \
 	m4datadir=%{_aclocaldir}
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
+cp -p %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 
 # no static modules and *.la for modules - shut up check-files
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/libimlib-*.{la,a}
+# obsoleted by pkg-config
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/lib{Imlib,gdk_imlib}.la
 
 %find_lang %{name}
 
@@ -193,9 +195,9 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README
 %attr(755,root,root) %{_libdir}/libImlib.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libImlib.so.1
+%ghost %{_libdir}/libImlib.so.1
 %attr(755,root,root) %{_libdir}/libgdk_imlib.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgdk_imlib.so.1
+%ghost %{_libdir}/libgdk_imlib.so.1
 %attr(755,root,root) %{_libdir}/libimlib-bmp.so
 %attr(755,root,root) %{_libdir}/libimlib-gif.so
 %attr(755,root,root) %{_libdir}/libimlib-jpeg.so
@@ -217,10 +219,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc doc/{*.gif,*.html}
 %attr(755,root,root) %{_bindir}/imlib-config
-%attr(755,root,root) %{_libdir}/libImlib.so
-%attr(755,root,root) %{_libdir}/libgdk_imlib.so
-%{_libdir}/libImlib.la
-%{_libdir}/libgdk_imlib.la
+%{_libdir}/libImlib.so
+%{_libdir}/libgdk_imlib.so
 %{_includedir}/Imlib*.h
 %{_includedir}/gdk_imlib*.h
 %{_aclocaldir}/imlib.m4

@@ -1,13 +1,15 @@
-diff -Nru imlib-1.9.10/Makefile.am imlib-1.9.10.new/Makefile.am
 --- imlib-1.9.10/Makefile.am	Sat Sep 30 04:09:41 2000
 +++ imlib-1.9.10.new/Makefile.am	Thu Apr 12 02:13:22 2001
 @@ -1,4 +1,4 @@
 -SUBDIRS = @GDK_IMLIB@ Imlib config doc
-+SUBDIRS = intl po @GDK_IMLIB@ Imlib config doc
++SUBDIRS = po @GDK_IMLIB@ Imlib config doc
  bin_SCRIPTS = imlib-config
  
  man_MANS = imlib-config.1
-diff -Nru imlib-1.9.10/configure.in imlib-1.9.10.new/configure.in
+--- imlib-1.9.10/po/LINGUAS	Sat Sep 30 04:09:41 2000
++++ imlib-1.9.10.new/po/LINGUAS	Thu Apr 12 02:13:22 2001
+@@ -0,0 +1 @@
++bg ca da de eo es fi fr gl hr hu id it lt nb nl pl pt ro sk sv tr uk wa zh_CN
 --- imlib-1.9.10/configure.in	Wed Mar 28 06:10:41 2001
 +++ imlib-1.9.10.new/configure.in	Thu Apr 12 02:15:09 2001
 @@ -13,6 +13,9 @@
@@ -15,7 +17,7 @@ diff -Nru imlib-1.9.10/configure.in imlib-1.9.10.new/configure.in
  AM_MAINTAINER_MODE
  
 +ALL_LINGUAS="bg ca da de eo es fi fr gl hr hu id it lt nb nl pl pt ro sk sv tr uk wa zh_CN"
-+AM_GNU_GETTEXT
++AM_GNU_GETTEXT([external])
 +
  dnl Give the user an option to compile without shared memory support,
  dnl incase it is broken for example.
@@ -76,123 +78,123 @@ diff -Nru imlib-1.9.10/po/bg.po imlib-1.9.10.new/po/bg.po
 +"Last-Translator: Victor Tashev <vtashev@infonet.techno-link.com>\n"
 +"Language-Team: Bulgarian\n"
 +"MIME-Version: 1.0\n"
-+"Content-Type: text/plain; charset=windows-1251\n"
++"Content-Type: text/plain; charset=UTF-8\n"
 +"Content-Transfer-Encoding: 8bit\n"
 +
 +#: utils/imlib_config.c:185
 +msgid "Imlib Config Editor"
-+msgstr "Редактор на Imlib конфигурацията"
++msgstr "Р РµРґР°РєС‚РѕСЂ РЅР° Imlib РєРѕРЅС„РёРіСѓСЂР°С†РёСЏС‚Р°"
 +
 +#: utils/imlib_config.c:948
 +msgid "Base Levels"
-+msgstr "Базови Нива"
++msgstr "Р‘Р°Р·РѕРІРё РќРёРІР°"
 +
 +#: utils/imlib_config.c:964
 +msgid "Red Levels"
-+msgstr "Нива на червеното"
++msgstr "РќРёРІР° РЅР° С‡РµСЂРІРµРЅРѕС‚Рѕ"
 +
 +#: utils/imlib_config.c:980
 +msgid "Green Levels"
-+msgstr "Нива на зеленото"
++msgstr "РќРёРІР° РЅР° Р·РµР»РµРЅРѕС‚Рѕ"
 +
 +#: utils/imlib_config.c:996
 +msgid "Blue Levels"
-+msgstr "Нива на синьото"
++msgstr "РќРёРІР° РЅР° СЃРёРЅСЊРѕС‚Рѕ"
 +
 +#: utils/imlib_config.c:1038
 +msgid "Small colour set"
-+msgstr "Малък набор цветове"
++msgstr "РњР°Р»СЉРє РЅР°Р±РѕСЂ С†РІРµС‚РѕРІРµ"
 +
 +#: utils/imlib_config.c:1043
 +msgid "Medium colour set"
-+msgstr "Среден набор цветове"
++msgstr "РЎСЂРµРґРµРЅ РЅР°Р±РѕСЂ С†РІРµС‚РѕРІРµ"
 +
 +#: utils/imlib_config.c:1048
 +msgid "Large colour set"
-+msgstr "Голям набор цветове"
++msgstr "Р“РѕР»СЏРј РЅР°Р±РѕСЂ С†РІРµС‚РѕРІРµ"
 +
 +#: utils/imlib_config.c:1057
 +msgid "Select Palette File"
-+msgstr "Изберете файл с палитра"
++msgstr "РР·Р±РµСЂРµС‚Рµ С„Р°Р№Р» СЃ РїР°Р»РёС‚СЂР°"
 +
 +#: utils/imlib_config.c:1066
 +msgid "Select"
-+msgstr "Избери"
++msgstr "РР·Р±РµСЂРё"
 +
 +#: utils/imlib_config.c:1081
 +msgid "Save"
-+msgstr "Запази"
++msgstr "Р—Р°РїР°Р·Рё"
 +
 +#: utils/imlib_config.c:1113
 +msgid "Copy To"
-+msgstr "Копирай в"
++msgstr "РљРѕРїРёСЂР°Р№ РІ"
 +
 +#: utils/imlib_config.c:1118
 +msgid "Spread To"
-+msgstr "Разшири до"
++msgstr "Р Р°Р·С€РёСЂРё РґРѕ"
 +
 +#: utils/imlib_config.c:1127
 +msgid "Set Last"
-+msgstr "Постави последно"
++msgstr "РџРѕСЃС‚Р°РІРё РїРѕСЃР»РµРґРЅРѕ"
 +
 +#: utils/imlib_config.c:1132
 +msgid "Delete"
-+msgstr "Изтрий"
++msgstr "РР·С‚СЂРёР№"
 +
 +#: utils/imlib_config.c:1372
 +msgid "Save User Config"
-+msgstr "Запази Потребителска конфигурация"
++msgstr "Р—Р°РїР°Р·Рё РџРѕС‚СЂРµР±РёС‚РµР»СЃРєР° РєРѕРЅС„РёРіСѓСЂР°С†РёСЏ"
 +
 +#: utils/imlib_config.c:1379
 +msgid "Save System Config"
-+msgstr "Запази Системна конфигурация"
++msgstr "Р—Р°РїР°Р·Рё РЎРёСЃС‚РµРјРЅР° РєРѕРЅС„РёРіСѓСЂР°С†РёСЏ"
 +
 +#: utils/imlib_config.c:1385
 +msgid "Close"
-+msgstr "Затвори"
++msgstr "Р—Р°С‚РІРѕСЂРё"
 +
 +#: utils/imlib_config.c:1525
 +msgid "Color Correction"
-+msgstr "Цветова Корекция"
++msgstr "Р¦РІРµС‚РѕРІР° РљРѕСЂРµРєС†РёСЏ"
 +
 +#: utils/imlib_config.c:1525
 +msgid "Colors"
-+msgstr "Цветове"
++msgstr "Р¦РІРµС‚РѕРІРµ"
 +
 +#: utils/imlib_config.c:1525
 +msgid "Display"
-+msgstr "Дисплей"
++msgstr "Р”РёСЃРїР»РµР№"
 +
 +
 +#: utils/imlib_config.c:1525
 +msgid "Rendering"
-+msgstr "Представяне"
++msgstr "РџСЂРµРґСЃС‚Р°РІСЏРЅРµ"
 +
 +#: utils/imlib_config.c:1526
 +msgid "Select Palette"
-+msgstr "Изберете палитра"
++msgstr "РР·Р±РµСЂРµС‚Рµ РїР°Р»РёС‚СЂР°"
 +
 +#: utils/imlib_config.c:1527
 +msgid "Force Palette"
-+msgstr "Наложи палитра"
++msgstr "РќР°Р»РѕР¶Рё РїР°Р»РёС‚СЂР°"
 +
 +
 +#: utils/imlib_config.c:1528
 +msgid "Dither in Palette Mode"
-+msgstr "Разпръскване в Палитрата"
++msgstr "Р Р°Р·РїСЂСЉСЃРєРІР°РЅРµ РІ РџР°Р»РёС‚СЂР°С‚Р°"
 +
 +
 +#: utils/imlib_config.c:1529
 +msgid "Fast Remapping in Palette Mode"
-+msgstr "Бързо мащабиране в режим Палитра"
++msgstr "Р‘СЉСЂР·Рѕ РјР°С‰Р°Р±РёСЂР°РЅРµ РІ СЂРµР¶РёРј РџР°Р»РёС‚СЂР°"
 +
 +#: utils/imlib_config.c:1530
 +msgid "High Quality in 15/16bpp"
-+msgstr "Високо Качество в 15/16bpp"
++msgstr "Р’РёСЃРѕРєРѕ РљР°С‡РµСЃС‚РІРѕ РІ 15/16bpp"
 +
 +#: utils/imlib_config.c:1531
 +msgid "Limit Maximum Shared memory Size (bytes)"
-+msgstr "Максимална Граница на размера на поделената памет (байтове)"
++msgstr "РњР°РєСЃРёРјР°Р»РЅР° Р“СЂР°РЅРёС†Р° РЅР° СЂР°Р·РјРµСЂР° РЅР° РїРѕРґРµР»РµРЅР°С‚Р° РїР°РјРµС‚ (Р±Р°Р№С‚РѕРІРµ)"
 +
 +#: utils/imlib_config.c:1533
 +msgid "256 Kb"
@@ -221,22 +223,22 @@ diff -Nru imlib-1.9.10/po/bg.po imlib-1.9.10.new/po/bg.po
 +
 +#: utils/imlib_config.c:1539
 +msgid "Use Ordered Dithering (Faster)"
-+msgstr "Използвай избраното разпръскване (по-бързо)"
++msgstr "РР·РїРѕР»Р·РІР°Р№ РёР·Р±СЂР°РЅРѕС‚Рѕ СЂР°Р·РїСЂСЉСЃРєРІР°РЅРµ (РїРѕ-Р±СЉСЂР·Рѕ)"
 +
 +
 +#: utils/imlib_config.c:1540
 +msgid "MIT-SHM Shared Memory Enabled"
-+msgstr "MIT-SHM активиране на споделената памет"
++msgstr "MIT-SHM Р°РєС‚РёРІРёСЂР°РЅРµ РЅР° СЃРїРѕРґРµР»РµРЅР°С‚Р° РїР°РјРµС‚"
 +
 +
 +#: utils/imlib_config.c:1541
 +msgid "Shared Pixmaps"
-+msgstr "Споделени пик карти"
++msgstr "РЎРїРѕРґРµР»РµРЅРё РїРёРє РєР°СЂС‚Рё"
 +
 +
 +#: utils/imlib_config.c:1542
 +msgid "Fast Render"
-+msgstr "Бързо представяне"
++msgstr "Р‘СЉСЂР·Рѕ РїСЂРµРґСЃС‚Р°РІСЏРЅРµ"
 +
 +# FIXME
 +#: utils/imlib_config.c:1543
@@ -245,7 +247,7 @@ diff -Nru imlib-1.9.10/po/bg.po imlib-1.9.10.new/po/bg.po
 +
 +#: utils/imlib_config.c:1544
 +msgid "Image Cache (bytes)"
-+msgstr "Кеш на изображението (байтове)"
++msgstr "РљРµС€ РЅР° РёР·РѕР±СЂР°Р¶РµРЅРёРµС‚Рѕ (Р±Р°Р№С‚РѕРІРµ)"
 +
 +#: utils/imlib_config.c:1547
 +msgid "1 Mb"
@@ -270,7 +272,7 @@ diff -Nru imlib-1.9.10/po/bg.po imlib-1.9.10.new/po/bg.po
 +
 +#: utils/imlib_config.c:1552
 +msgid "Pixmap Cache (bits)"
-+msgstr "Кеш на Пик картата (бита)"
++msgstr "РљРµС€ РЅР° РџРёРє РєР°СЂС‚Р°С‚Р° (Р±РёС‚Р°)"
 +
 +#: utils/imlib_config.c:1554
 +msgid "5120 Kbits"
@@ -299,7 +301,7 @@ diff -Nru imlib-1.9.10/po/bg.po imlib-1.9.10.new/po/bg.po
 +
 +#: utils/imlib_config.c:1560
 +msgid "Force Visual ID"
-+msgstr "Наложи зрително ID"
++msgstr "РќР°Р»РѕР¶Рё Р·СЂРёС‚РµР»РЅРѕ ID"
 diff -Nru imlib-1.9.10/po/ca.po imlib-1.9.10.new/po/ca.po
 --- imlib-1.9.10/po/ca.po	Thu Jan  1 01:00:00 1970
 +++ imlib-1.9.10.new/po/ca.po	Thu Apr 12 02:13:22 2001
@@ -1471,7 +1473,7 @@ diff -Nru imlib-1.9.10/po/fi.po imlib-1.9.10.new/po/fi.po
 +"Last-Translator: Kim Enkovaara <kim.enkovaara@iki.fi>\n"
 +"Language-Team: Finnish <fi@li.org>\n"
 +"MIME-Version: 1.0\n"
-+"Content-Type: text/plain; charset=ISO 8859-15\n"
++"Content-Type: text/plain; charset=ISO-8859-15\n"
 +"Content-Transfer-Encoding: 8bit\n"
 +"X-Generator: KBabel 0.5(devel)\n"
 +
@@ -4923,7 +4925,7 @@ diff -Nru imlib-1.9.10/po/tr.po imlib-1.9.10.new/po/tr.po
 +"Last-Translator: Gцrkem Зetin <gorkem@gelecek.com.tr>\n"
 +"Language-Team: Turkish <tr@li.org>\n"
 +"MIME-Version: 1.0\n"
-+"Content-Type: text/plain; charset=ISO8859-9\n"
++"Content-Type: text/plain; charset=ISO-8859-9\n"
 +"Content-Transfer-Encoding: 8-bit\n"
 +
 +#: utils/imlib_config.c:185
