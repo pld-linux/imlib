@@ -10,7 +10,7 @@ Release:	27
 Epoch:		1
 License:	LGPL v2
 Group:		X11/Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/imlib/1.9/%{name}-%{version}.tar.bz2
+Source0:	https://download.gnome.org/sources/imlib/1.9/%{name}-%{version}.tar.bz2
 # Source0-md5:	7db987e6c52e4daf70d7d0f471238eae
 Source1:	%{name}-config.desktop
 Patch0:		%{name}-m4_fix.patch
